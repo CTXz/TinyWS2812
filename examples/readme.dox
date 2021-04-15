@@ -1,0 +1,9 @@
+/**
+ * @dir examples
+ * 
+ * @brief Example code to demonstate the Tiny WS2812 driver
+ *
+ * The following directory hold example code to demonstrate
+ * the Tiny WS2812 driver on multiple target build platforms.
+ * 
+ * /

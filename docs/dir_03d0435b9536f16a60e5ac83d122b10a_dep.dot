@@ -1,0 +1,11 @@
+digraph "examples/arduino_avr" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d28a4824dc47e487b107a5db32ef43c4 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="examples" fontname="Helvetica", fontsize="10", URL="dir_d28a4824dc47e487b107a5db32ef43c4.html"]
+  dir_03d0435b9536f16a60e5ac83d122b10a [shape=box, label="arduino_avr", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_03d0435b9536f16a60e5ac83d122b10a.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_03d0435b9536f16a60e5ac83d122b10a->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="2", labeldistance=1.5 headhref="dir_000001_000003.html"];
+}

@@ -1,0 +1,11 @@
+digraph "examples/avr" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d28a4824dc47e487b107a5db32ef43c4 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="examples" fontname="Helvetica", fontsize="10", URL="dir_d28a4824dc47e487b107a5db32ef43c4.html"]
+  dir_dcc73ae8d9017409f9960a071b395d53 [shape=box, label="avr", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_dcc73ae8d9017409f9960a071b395d53.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_dcc73ae8d9017409f9960a071b395d53->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="2", labeldistance=1.5 headhref="dir_000002_000003.html"];
+}

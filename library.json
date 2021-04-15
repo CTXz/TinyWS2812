@@ -1,0 +1,22 @@
+{
+        "name": "Tiny WS2812",
+        "version": "1.0.0",
+        "description": "An extremely light cross-platform WS2812 driver.",
+        "keywords": "ws2812, driver, crossplatform, light, tiny, avr, arduino",
+        "repository":
+        {
+          "type": "git",
+          "url": "https://github.com/CTXz/TinyWS2812"
+        },
+        "authors":
+        [
+          {
+            "name": "Patrick Pedersen",
+            "email": "ctx.xda@gmail.com",
+            "maintainer": true
+          }
+        ],
+        "license": "GPLv3",
+        "frameworks": "*",
+        "platforms": "*"
+      }
