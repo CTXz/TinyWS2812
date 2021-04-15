@@ -179,13 +179,19 @@ doxybook2 --input doxygen/xml --templates "doxybook_templates/" --output "$tmp" 
 mv "$tmp/indexpage.md" readme.md 
 rm -r "$tmp"
 
+# Remove top
+
+sed -i "s/Welcome to the Tiny-WS2812 documentation\.//g" readme.md
+
 # Fix references
 sed -i "s|\(\[.*\](\)|\1$DOCS_URL|" readme.md
 
+offset=0
 # Fix lists lacking a linebreak at end
-grep -A1 '^\* .*$' readme.md | grep -v '\-\-\|^\* .*$' | while read -r line; do
-        unregex "$line"
-        sed -i "\|$_RETURN|i \ " readme.md
+grep -n -A1 '^\* .*$' readme.md | grep -v '\-\-\|:\* .*$' | while read -r line; do
+        line_num="$(echo $line | cut -f1 -d-)"
+        sed -i "$((line_num + offset))i \ " readme.md
+        ((offset++))
 done
 
 ## The following code alters the ws2812_cfg struct reference to display

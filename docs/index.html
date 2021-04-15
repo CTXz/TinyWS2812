@@ -108,9 +108,9 @@ Basic usage/tutorial</h1>
 Importing the driver</h2>
 <p>The driver has been primarily written with platformio in mind, but can be also be imported into the Arduino IDE and frankly, any other programming environment.</p>
 <p>To import the driver on platformio, simply look for its name in the extensions browser and download the extension.</p>
-<p>Importing the driver into the Arduino IDE is a little nasty, due to its limitations of now allowing one to define compile macros, as well as its incompatibility with c files. To still be able to import this project into the Arduino IDE, I have written a bash script, called makearduinolib, which can be found in the tools/ folder of this project. To run it, simply execute:</p>
+<p>Importing the driver into the Arduino IDE is a little nasty, due to its limitations of now allowing one to define compile macros, as well as its incompatibility with c files. To still be able to import this project into the Arduino IDE, I have written a bash script to generate an Arduino-IDE compatible library, called makearduinolib.sh, which can be found in the tools/ folder of this project. To run it, simply execute:</p>
 <div class="fragment"><div class="line">./tools/makearduinolib.sh</div>
-</div><!-- fragment --><p>The script will as you to specify a target platform and produce a Arduio-IDE compatible library zip in the root folder of this project.</p>
+</div><!-- fragment --><p>The script will ask you to specify a target platform and produce a Arduio-IDE compatible library zip in the root folder of this project.</p>
 <h2><a class="anchor" id="target_platform_sec"></a>
 Selecting the target platform</h2>
 <dl class="section note"><dt>Note</dt><dd>This section can be skipped if you use the Arduino IDE and have generated a library zip using the script mentioned above, as a target platform has already been selected in the library generating process.</dd></dl>

@@ -1,13 +1,12 @@
-# Tiny-WS2812 Driver Documentation
-
-
-<br>
-
-> ## [Doxygen Reference](https://ctxz.github.io/TinyWS2812/https://ctxz.github.io/TinyWS2812/)
+# Tiny WS2812
 
 <br>
 
-Welcome to the Tiny-WS2812 documentation.
+> ## [Doxygen Reference](https://ctxz.github.io/TinyWS2812/)
+
+<br>
+
+
 
 
 # Introduction
@@ -18,6 +17,7 @@ The following platforms and frameworks are currently supported:
 
 * Barebone AVR
 * The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
+ 
 It has been developed out of the necessity to have an extremely light weight and flexible cross-platform driver that can be further abstracted and used troughout my WS2812 projects, particullary on MCUs with severe memory constraints (ex. ATTiny chips), where one cannot just define an RGB array equivalent to the size of the LED strip. This drivers purpose is **NOT** to provide fancy abstractions and functions for color correction, brightness settings, animations etc.
 
 To summerize, this driver is inteded to:
@@ -25,6 +25,7 @@ To summerize, this driver is inteded to:
 * be used on MCUs with limited computing resources.
 * act as a base for more abstract WS2812 libraries.
 * be easily portable to other platforms or programming frameworks (ex. Arduino).
+ 
 Because the motivation of this driver is to be as barebone as possible, it relies on a superficial understanding of the WS2812 protocol and may demand an understanding of the host platforms platform (eg. registers etc.). For quick and simple programming of WS2812 strips, where memory and processing power are not a big issue, other drivers/libraries should probably be consulted.
 
 
@@ -51,7 +52,7 @@ The driver has been primarily written with platformio in mind, but can be also b
 
 To import the driver on platformio, simply look for its name in the extensions browser and download the extension.
 
-Importing the driver into the Arduino IDE is a little nasty, due to its limitations of now allowing one to define compile macros, as well as its incompatibility with c files. To still be able to import this project into the Arduino IDE, I have written a bash script, called makearduinolib, which can be found in the tools/ folder of this project. To run it, simply execute:
+Importing the driver into the Arduino IDE is a little nasty, due to its limitations of now allowing one to define compile macros, as well as its incompatibility with c files. To still be able to import this project into the Arduino IDE, I have written a bash script to generate an Arduino-IDE compatible library, called makearduinolib.sh, which can be found in the tools/ folder of this project. To run it, simply execute:
 
 
 
@@ -59,7 +60,7 @@ Importing the driver into the Arduino IDE is a little nasty, due to its limitati
 ./tools/makearduinolib.sh
 ```
 
-The script will as you to specify a target platform and produce a Arduio-IDE compatible library zip in the root folder of this project.
+The script will ask you to specify a target platform and produce a Arduio-IDE compatible library zip in the root folder of this project.
 
 
 ## Selecting the target platform
@@ -73,6 +74,7 @@ To use the Tiny-WS2812 driver throughout your project, first ensure that you hav
 
 * Barebone AVR: `WS2812_TARGET_PLATFORM_AVR`
 * Arduino Framework (AVR): `WS2812_TARGET_PLATFORM_ARDUINO_AVR`
+ 
 Support for more platforms (ex. ESP and ARM) is planned in the future.
 
 Perhaps you may be wondering what the difference it makes to build for the barebone AVR target and the Arduino AVR target. While both targets can be effectively used for any AVR MCU based device, the barebone AVR target limits itself to the code provided by the AVR C libraries. The Arduino AVR target makes use of the code provided by the Arduino framework. The only difference relevant to the driver user here is that the Arduino framework target will include the Arduino framework (which may not be desired or possible in some circumstances) and the differences in the driver configuration struct (ws2812_cfg, more on that later), which is platform specific and is used to configure various driver parameters (data output pin, strip reset time, strip color order etc.).
@@ -241,4 +243,4 @@ In the example above we have used an RGB array to set the colors of the WS2812 s
 
 -------------------------------
 
-Updated on 15 April 2021 at 19:59:13 CEST
+Updated on 15 April 2021 at 20:46:04 CEST
