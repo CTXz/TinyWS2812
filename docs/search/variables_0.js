@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cfg_50',['cfg',['../arduino__avr_2blink__array_8c.html#acd34326b558fb69f4f7ff22db579c82a',1,'cfg():&#160;blink_array.c'],['../arduino__avr_2blink__loop_8c.html#acd34326b558fb69f4f7ff22db579c82a',1,'cfg():&#160;blink_loop.c']]]
+  ['ddr_61',['ddr',['../structws2812__cfg.html#a05c7bc58ea6e94f80e5b4b7f0ab3a554',1,'ws2812_cfg']]]
 ];

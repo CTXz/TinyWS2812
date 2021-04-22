@@ -21,13 +21,13 @@
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 
- * @brief Blinks one or more WS2812 strips using a more memory efficient method than the blink_array.c example.
+ * @brief Blinks one or more WS2812 devices using a more memory efficient method than the blink_array.c example.
  * 
  * The following example showcases how the Tiny-WS2812 library can
- * be used on AVR platforms blink an entire WS2812 LED strip in white. 
- * Unlike the other blink example, we do not allocate a memory expensive 
- * array for the entire LED strip here, but instead loop the transmission
- * of a single RGB value until the strip has been filled.
+ * be used on AVR platforms to blink an entire WS2812 device in white.
+ * Unlike the other blink example, we do not allocate a memory expensive
+ * array for every single LED here, but instead loop the transmission of
+ * a single RGB value until all WS2812 LEDs have been set.
  * 
  * The advantage of this method is that we can save allot of memory, the
  * disadvantage is that this method is more prone to programming mistakes.
@@ -46,66 +46,67 @@
 #include <ws2812.h>
 
 // Parameters - ALTER THESE TO CORRESPOND WITH YOUR OWN SETUP!
-#define STRIP_SIZE 8            //< Size of your WS2812 strip(s)
-#define DATA_PINS_PORT PORTB    //< Port register used to communicate with the WS2812 strip(s)
-#define DATA_PINS_DDR DDRB      //< Data direction register of the pin(s) used to communicate with the WS2812 strip(s)
-#define DATA_PINS {PB0, PB1}    //< Pin(s) used to communicate with the WS2812 strip(s)
-#define RESET_TIME 50           //< Reset time in microseconds (50us recommended by datasheet)
-#define COLOR_ORDER grb         //< Color order of your LED strip(s) (Typically grb or rgb)
+#define N_LEDS 8                ///< Number of LEDs on your WS2812 device(s)
+#define DATA_PINS_PORT PORTB    ///< Port register used to communicate with the WS2812 device(s)
+#define DATA_PINS_DDR DDRB      ///< Data direction register of the pin(s) used to communicate with the WS2812 device(s)
+#define DATA_PINS {PB0, PB1}    ///< Pin(s) used to communicate with the WS2812 device(s)
+#define RESET_TIME 50           ///< Reset time in microseconds (50us recommended by datasheet)
+#define COLOR_ORDER grb         ///< Color order of your WS2812 LEDs (Typically grb or rgb)
 
 // Colors
 ws2812_rgb white = {255,255,255};
 ws2812_rgb black = {0, 0 ,0};
 
 /**
- * Blinks the WS2812 strip(s)
+ * Blinks one or more WS2812 device(s)
  */
 int main()
 {
-        uint8_t pins[] = DATA_PINS;
-        ws2812_cfg cfg; // Driver configurationn
+        uint8_t pins[] = DATA_PINS; // Data pins
+        ws2812_cfg cfg;             // Driver configurationn
+        ws2812 ws2812_dev;          // Device struct
 
         // Configure the driver
         cfg.port = &DATA_PINS_PORT;
         cfg.ddr = &DATA_PINS_DDR;
         cfg.pins = pins;
-        cfg.n_strips = sizeof(pins);
+        cfg.n_dev = sizeof(pins);     // Number of devices driven by this struct
         cfg.rst_time_us = RESET_TIME;
         cfg.order = grb;
         
-        if (ws2812_config(cfg) != 0) {
+        if (ws2812_config(&ws2812_dev, cfg) != 0) {
                 // HANDLE ERROR...
                 void;
         };
 
-        // Blink strip
+        // Blink device
         while (1) {
                 // Prepare driver to transmit data
-                ws2812_prep_tx();
+                ws2812_prep_tx(&ws2812_dev);
 
                 // Program all LEDs to white
-                for (unsigned int i = 0; i < STRIP_SIZE; i++) {
-                        ws2812_tx(&white, sizeof(white)/sizeof(ws2812_rgb));
+                for (unsigned int i = 0; i < N_LEDS; i++) {
+                        ws2812_tx(&ws2812_dev, &white, sizeof(white)/sizeof(ws2812_rgb));
                         // THIS LOOP NEEDS TO RUN UNINTERRUPTED!
                 }
                 
                 // Close transmission
-                ws2812_close_tx();
+                ws2812_close_tx(&ws2812_dev);
 
                 // Wait 500ms
                 _delay_ms(500);
 
                 // Prepare driver to transmit data
-                ws2812_prep_tx();
+                ws2812_prep_tx(&ws2812_dev);
 
                 // Program all LEDs to black (off)
-                for (unsigned int i = 0; i < STRIP_SIZE; i++) {
-                        ws2812_tx(&black, sizeof(black)/sizeof(ws2812_rgb));
+                for (unsigned int i = 0; i < N_LEDS; i++) {
+                        ws2812_tx(&ws2812_dev, &black, sizeof(black)/sizeof(ws2812_rgb));
                         // THIS LOOP NEEDS TO RUN UNINTERRUPTED!
                 }
                 
                 // Close transmission
-                ws2812_close_tx();
+                ws2812_close_tx(&ws2812_dev);
 
                 // Wait 500ms
                 _delay_ms(500);

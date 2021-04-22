@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['n_5fstrips_52',['n_strips',['../structws2812__cfg.html#aa8c9e74284fd4a6440cab54b36969b97',1,'ws2812_cfg']]]
+  ['maskhi_63',['maskhi',['../structws2812.html#ae191c20dea8f9cca0bb92e9d0431f721',1,'ws2812']]],
+  ['masklo_64',['masklo',['../structws2812.html#ad04d92a4b1276fbb588960ad009b67b9',1,'ws2812']]]
 ];

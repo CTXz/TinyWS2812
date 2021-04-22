@@ -1,0 +1,25 @@
+digraph "include/ws2812_common.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="include/ws2812_common.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Definitions required by all platform specific headers."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="include/ws2812_avr.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__avr_8h.html",tooltip="Provides AVR platform specific definitions."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="include/ws2812.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812_8h.html",tooltip="Exposes the Tiny-WS2812 driver interface."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="src/ws2812_avr.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__avr_8c.html",tooltip="Driver code for AVR chips."];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="src/ws2812_common.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__common_8c.html",tooltip="Common driver code shared accross all supported platforms."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="examples/arduino_avr\l/blink_array.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$arduino__avr_2blink__array_8c.html",tooltip="Blinks one or more WS2812 devices using a RGB array."];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="examples/arduino_avr\l/blink_loop.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$arduino__avr_2blink__loop_8c.html",tooltip="Blinks one or more WS2812 devices using a more memory efficient method than the blink_array...."];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="examples/avr/blink\l_array.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$avr_2blink__array_8c.html",tooltip="Blinks one or more WS2812 devices using a RGB array."];
+  Node3 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="examples/avr/blink\l_loop.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$avr_2blink__loop_8c.html",tooltip="Blinks one or more WS2812 devices using a more memory efficient method than the blink_array...."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

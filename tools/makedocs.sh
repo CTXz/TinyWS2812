@@ -42,6 +42,8 @@ declare -a PLATFORMS=(
 
 DOCS_URL="https://ctxz.github.io/TinyWS2812/"
 
+STRUCT_DEFS="include/"
+
 # run_doxygen
 # Description:
 #       This is a function because dealing with quotes is a pain.
@@ -73,7 +75,7 @@ function run_doxygen()
 function struct_get_detailed_description()
 {
         # Get detailed description from first platform (description is same for every platform)
-        run_doxygen "WS2812_TARGET_PLATFORM_${PLATFORMS[0]}" "include/ws2812.h" "NO"
+        run_doxygen "WS2812_TARGET_PLATFORM_${PLATFORMS[0]}" "$STRUCT_DEFS" "NO"
 
         detailed_description="$(pcregrep -M "<a name=\"details\" id=\"details\"></a><h2 class=\"groupheader\">Detailed Description</h2>.*(\n|.)*<hr/>The documentation for this struct was generated from the following file:<ul>" $1)"
         detailed_description="$(echo "$detailed_description" | tr -d '\n')"
@@ -91,7 +93,7 @@ function struct_get_detailed_description()
 #       $2 - Path to struct reference file
 function struct_get_public_attributes()
 {
-        run_doxygen "WS2812_TARGET_PLATFORM_$1" "include/ws2812.h" "NO"
+        run_doxygen "WS2812_TARGET_PLATFORM_$1" "$STRUCT_DEFS" "NO"
         public_attributes="$(pcregrep -M "<table class=\"memberdecls\">.*(\n|.)*</table>" $2)"
         public_attributes="$(echo "$public_attributes" | tr -d '\n')"
         _RETURN="$public_attributes"
@@ -106,7 +108,7 @@ function struct_get_public_attributes()
 #       $2 - Path to members list
 function struct_get_members()
 {
-        run_doxygen "WS2812_TARGET_PLATFORM_$1" "include/ws2812.h" "NO"
+        run_doxygen "WS2812_TARGET_PLATFORM_$1" "$STRUCT_DEFS" "NO"
         members="$(pcregrep -M "<table class=\"directory\">.*(\n|.)*</table>" $2)"
         members="$(echo "$members" | tr -d '\n')"
         members="$(echo "$members" | sed 's/<\/div><!-- contents -->//g')"     
@@ -206,7 +208,7 @@ struct_get_detailed_description "doxygen/html/structws2812__cfg.html"
 WS2812_CFG_DETAILED_DESCRIPTION="$_RETURN"
 
 # Generate platformless reference for ws2812.h
-run_doxygen "" "include/ws2812.h" "NO"
+run_doxygen "" "include/ws2812_*" "NO"
 
 # Create a modifiable copy of the struct reference
 # so that get functions don't interfere with changes
@@ -274,7 +276,7 @@ mv "$MOD_STRUCT_REF" "doxygen/html/structws2812__cfg.html"
 mv "$MOD_MEMBER_REF" "doxygen/html/structws2812__cfg-members.html"
 
 # Move doxygen HTML output to docs/ so that it can be accessed from github pages
-rm -r docs/
+rm -rf docs/
 mv doxygen/html docs/ 
 
 rm -r doxygen

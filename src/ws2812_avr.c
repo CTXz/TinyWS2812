@@ -29,6 +29,7 @@
 #if defined(WS2812_TARGET_PLATFORM_AVR) || defined(WS2812_TARGET_PLATFORM_ARDUINO_AVR)
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #include <avr/interrupt.h>
 #include <avr/io.h>
@@ -96,11 +97,8 @@
 #define w_nop8  w_nop4 w_nop4
 #define w_nop16 w_nop8 w_nop8
 
-volatile uint8_t *_port;
 static uint8_t _sreg_prev;
-static uint8_t _rst_time_us;
-static uint8_t _masklo, _maskhi;
-static uint8_t _rgbmap[3];
+static bool _prep = false;
 
 #ifdef WS2812_TARGET_PLATFORM_AVR
 /**
@@ -124,52 +122,55 @@ void delay_us(uint8_t us)
 #endif
 
 // Refer to header for documentation
-uint8_t ws2812_config(ws2812_cfg config)
+uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config)
 {
-        if (config.n_strips == 0)
-                return 1; // No strips to be driven!
+        if (config.n_dev == 0)
+                return 1; // No devices to be driven!
         
         uint8_t pin_msk = 0;
 
 #ifdef WS2812_TARGET_PLATFORM_ARDUINO_AVR
-        for (uint8_t i = 0; i < config.n_strips; i++) {
-                if (i+1 < config.n_strips &&
+        for (uint8_t i = 0; i < config.n_dev; i++) {
+                if (i+1 < config.n_dev &&
                     digitalPinToPort(config.pins[i]) != digitalPinToPort(config.pins[i+1]))
                         return 2; // Pins do not share same port!
                 pinMode(config.pins[i], OUTPUT);
                 pin_msk |= digitalPinToBitMask(config.pins[i]);
         }
-        _port = portOutputRegister(digitalPinToPort(config.pins[0]));
+        dev->port = portOutputRegister(digitalPinToPort(config.pins[0]));
 #else
-        for (uint8_t i = 0; i < config.n_strips; i++)
+        for (uint8_t i = 0; i < config.n_dev; i++)
                 pin_msk |= 1 << config.pins[i];
 
         *config.ddr = pin_msk;
-        _port = config.port;
+        dev->port = config.port;
 #endif
-        _rst_time_us = config.rst_time_us;
-        _masklo = ~pin_msk & *_port;
-        _maskhi = pin_msk | *_port;
+        dev->rst_time_us = config.rst_time_us;
+        dev->masklo = ~pin_msk & *(dev->port);
+        dev->maskhi = pin_msk | *(dev->port);
         
-        _ws2812_get_rgbmap(&_rgbmap, config.order);
+        _ws2812_get_rgbmap(&dev->rgbmap, config.order);
         
         return 0;
 }
 
 // Refer to header for documentation
-void ws2812_prep_tx()
+void ws2812_prep_tx(ws2812 *dev)
 {
-        _sreg_prev = SREG;
-        cli();
+        if (_prep == false) {
+                _sreg_prev = SREG;
+                cli();
+                _prep = true;
+        }
 }
 
 // Refer to header for documentation
-void ws2812_wait_rst()
+void ws2812_wait_rst(ws2812 *dev)
 {
 #ifdef WS2812_TARGET_PLATFORM_ARDUINO_AVR
-        delayMicroseconds(_rst_time_us);
+        delayMicroseconds(dev->rst_time_us);
 #else
-        delay_us(_rst_time_us);
+        delay_us(dev->rst_time_us);
 #endif
 }
 
@@ -178,15 +179,15 @@ void ws2812_wait_rst()
 #pragma GCC optimize ("O0")
 
 /**
- * @brief Transmits a byte of data to the WS2812 strip.
+ * @brief Transmits a byte of data to the \ref ws2812 "WS2812 device".
  * 
- * The following function transmits a single byte of data to the WS2812 strip.
+ * The following function transmits a single byte of data to the provided \ref ws2812 "WS2812 device".
  * It is primarily based on the driver code of [cpldcpu's light_ws2812](https://github.com/cpldcpu/light_ws2812)
- * library and achieves precisely timed communication with the WS2812 strip
+ * library and achieves precisely timed communication with the WS2812 device
  * through inline AVR assembly code.
  * 
  */
-void ws2812_tx_byte(uint8_t byte)
+void ws2812_tx_byte(ws2812 *dev, uint8_t byte)
 {
         uint8_t ctr;
 
@@ -249,29 +250,32 @@ void ws2812_tx_byte(uint8_t byte)
                 "       dec   %0    \n\t"    //  '1' [+4] '0' [+3]
                 "       brne  loop%=\n\t"    //  '1' [+5] '0' [+4]
                 :	"=&d" (ctr)
-                :	"r" (byte), "x" ((uint8_t *) _port), "r" (_maskhi), "r" (_masklo)
+                :	"r" (byte), "x" ((uint8_t *) dev->port), "r" (dev->maskhi), "r" (dev->masklo)
         );
 }
 
 #pragma GCC pop_options
 
 // Refer to header for documentation
-void ws2812_tx(ws2812_rgb *pxls, size_t n_pxls)
+void ws2812_tx(ws2812 *dev, ws2812_rgb *pxls, size_t n_pxls)
 {
         for (size_t i = 0; i < n_pxls; i++) {
-                for (uint8_t j = 0; j < sizeof(_rgbmap); j++) {
+                for (uint8_t j = 0; j < sizeof(dev->rgbmap); j++) {
                         uint8_t *pxl = (uint8_t *) &(pxls[i]);
-                        ws2812_tx_byte(pxl[_rgbmap[j]]);
+                        ws2812_tx_byte(dev, pxl[dev->rgbmap[j]]);
                 }
         }
 }
 
 // Refer to header for documentation
-void ws2812_close_tx()
+void ws2812_close_tx(ws2812 *dev)
 {
-        SREG = _sreg_prev;
-        sei();
-        ws2812_wait_rst();
+        if (_prep == true) {
+                SREG = _sreg_prev;
+                sei();
+                _prep = false;
+                ws2812_wait_rst(dev);
+        }
 }
 
 #endif
