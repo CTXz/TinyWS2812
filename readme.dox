@@ -1,5 +1,5 @@
 /**
- * @mainpage Tiny-WS2812 Driver Documentation
+ * @mainpage Tiny-WS2812 Library Documentation
  * 
  * Welcome to the Tiny-WS2812 documentation.
  * 
@@ -7,60 +7,59 @@
  *
  * @section intro_sec Introduction
  * 
- * The Tiny-WS2812 driver interface initially derives from the
- * driver code of an open source WS2812 LED controller that I had
- * worked on prior, and provides a nearly barebone interface to
- * communicate with WS2812 devices.
+ * The Tiny-WS2812 library initially derives from the driver code
+ * of an open source WS2812 LED controller that I had worked on prior,
+ * and provides a nearly barebone interface to communicate with WS2812 devices.
  * 
  * The following platforms and frameworks are currently supported:
  *      - Barebone AVR
  *      - The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
  * 
  * It has been developed out of the necessity to have an extremely light 
- * weight and flexible cross-platform driver that can be further abstracted
+ * weight and flexible cross-platform library that can be further abstracted
  * and used troughout my WS2812 projects, particullary on MCUs with severe 
  * memory constraints (ex. ATTiny chips), where one cannot just define an RGB
- * array equivalent to the number of LEDs. This drivers purpose is **NOT**
+ * array equivalent to the number of LEDs. This libraries purpose is **NOT**
  * to provide fancy abstractions and functions for color correction, brightness 
  * settings, animations etc.
  * 
- * To summerize, this driver is inteded to:
+ * To summerize, this library is inteded to:
  *      - be used on MCUs with limited computing resources.
  *      - act as a base for more abstract WS2812 libraries.
  *      - be easily portable to other platforms or programming frameworks (ex. Arduino).
  *
- * @note Because the motivation of this driver is to be as barebone as possible,
+ * @note Because the motivation of this library is to be as barebone as possible,
  *      it relies on a superficial understanding of the WS2812 protocol and may
  *      demand an understanding of the host platforms platform (eg. registers etc.).
  *      For quick and simple programming of WS2812 devices, where memory and processing
- *      power are not a big issue, other drivers/libraries should probably be consulted.
+ *      power are not a big issue, other libraries should probably be consulted.
  * 
  * @section overview_sec Overview
  * 
- * The WS2812 driver code is split into two parts. The first part is the abstract driver
- * interface defined in ws2812.h. The second part is the platform specific code that
+ * The WS2812 library code is split into two parts. The first part is the abstract library
+ * interface defined in ws2812.h. The second part is the platform specific driver code that
  * implements the interface for different platforms (at the moment only barebone AVR 
- * and AVR based Arduino devices). The platform specific driver implementations can
- * be found in the @ref src directory. To use this driver throughout your project, only an understanding of the driver
- * interface is required.
+ * and AVR based Arduino devices). The platform specific library implementations can
+ * be found in the @ref src directory. To use this library throughout your project, only
+ * an understanding of the library interface is required.
  * 
- * To make the use of this driver a breeze, all source files have been documented and
+ * To make the use of this library a breeze, all source files have been documented and
  * referenced using doxygen.
  * 
  * - You can find a list of classes here: [Class list](annotated.html)
  * - You can find a overview of all source files, including examples, here: [File list](files.html)
  * 
- * In the next section we will go through a basic example to get familiar with the driver in no time.
+ * In the next section we will go through a basic example to get familiar with the library in no time.
  * 
  * @section basic_usage Basic usage/tutorial
- * @subsection import_sec Importing the driver
- * The driver has been primarily written with platformio in mind, but can be also
+ * @subsection import_sec Importing the library
+ * The library has been primarily written with platformio in mind, but can be also
  * be imported into the Arduino IDE and frankly, any other programming environment.
  * 
- * To import the driver on platformio, simply look for its name in the extensions browser
+ * To import the library on platformio, simply look for its name in the extensions browser
  * and download the extension.
  * 
- * Importing the driver into the Arduino IDE is a little nasty, due to its limitations
+ * Importing the library into the Arduino IDE is a little nasty, due to its limitations
  * of now allowing one to define compile macros, as well as its incompatibility with c
  * files. To still be able to import this project into the Arduino IDE, I have written
  * a bash script to generate an Arduino-IDE compatible library, called makearduinolib.sh,
@@ -79,8 +78,8 @@
  * library zip using the script mentioned above, as a target platform has already been
  * selected in the library generating process.
  * 
- * To use the Tiny-WS2812 driver throughout your project, first ensure that you have
- * specified the target platform for which the driver is being build for. To do so,
+ * To use the Tiny-WS2812 library throughout your project, first ensure that you have
+ * specified the target platform for which the library is being build for. To do so,
  * define one of the following build flags in your project:
  * 
  * - Barebone AVR: `WS2812_TARGET_PLATFORM_AVR`
@@ -92,15 +91,15 @@
  * target and the Arduino AVR target. While both targets can be effectively used for any
  * AVR MCU based device, the barebone AVR target limits itself to the code provided by the 
  * AVR C libraries. The Arduino AVR target makes use of the code provided by the Arduino framework. 
- * The only difference relevant to the driver user here is that the Arduino framework target will 
+ * The only difference relevant to the library user here is that the Arduino framework target will 
  * include the Arduino framework (which may not be desired or possible in some circumstances) 
- * and the differences in the driver configuration struct (ws2812_cfg, more on that later), 
- * which is platform specific and is used to configure various driver parameters (data output
+ * and the differences in the library configuration struct (ws2812_cfg, more on that later), 
+ * which is platform specific and is used to configure various library parameters (data output
  * pin, reset time, color order etc.).
  * 
  * @subsection avr_example_sec Learning by example: Blinking one or more WS2812 devices
  * In the following section we will working our way through the examples/arduino_avr/blink_array.c example.
- * We assume our target platform to be ARDUINO_AVR, however most of the driver specific
+ * We assume our target platform to be ARDUINO_AVR, however most of the library specific
  * code is the same across all platforms. Platform specific differences will be indicated.
  * 
  * @code
@@ -142,7 +141,7 @@ void loop()
                 leds[i].b = 255;              
         }
 
-        ws2812_prep_tx(&ws2812_dev);           // Prepare driver to transmit data
+        ws2812_prep_tx(&ws2812_dev);           // Prepare to transmit data
         ws2812_tx(&ws2812_dev, leds, N_LEDS);  // Transmit array of rgb values to the device
         ws2812_close_tx(&ws2812_dev);          // Close transmission
 
@@ -156,7 +155,7 @@ void loop()
                 leds[i].b = 0;
         }
 
-        ws2812_prep_tx(&ws2812_dev);          // Prepare driver to transmit data
+        ws2812_prep_tx(&ws2812_dev);          // Prepare to transmit data
         ws2812_tx(&ws2812_dev, leds, N_LEDS); // Transmit array of rgb values to the device
         ws2812_close_tx(&ws2812_dev);         // Close transmission
 
@@ -170,7 +169,7 @@ void loop()
          #include <ws2812.h>
  * @endcode
  * 
- * This header exposes the interface of the WS2812 driver, in other words, it provides you with all of the
+ * This header exposes the interface of the WS2812 library, in other words, it provides you with all of the
  * relevant functions to drive WS2812 devices.
  * 
  * Following the header inclusion, we define some fixed macro parameters that you must adjust
@@ -182,8 +181,8 @@ void loop()
         #define COLOR_ORDER grb  ///< Color order of your WS2812 LEDs (Typically grb or rgb
  * @endcode
  *
- * The `DATA_PINS` parameter tells the driver which Arduino pins are used to program WS2812 devices.
- * As you may have noticed by now, the driver has the option to drive multiple WS2812 devices in parallel.
+ * The `DATA_PINS` parameter tells the library which Arduino pins are used to program WS2812 devices.
+ * As you may have noticed by now, the library has the option to drive multiple WS2812 devices in parallel.
  * However, this feature may be **platform specific** and comes with some restrictions.
  * 
  * @note A note on driving multiple WS2812 devices on AVR devices:
@@ -198,7 +197,7 @@ void loop()
  * for devices with a large number of LEDs can be reduced by quickly alternating transmission between them, 
  * as long as the MCU can toggle between transmissions faster than the reset time.
  *  
- * The `RESET_TIME` parameter tells the driver how many microseconds it must wait
+ * The `RESET_TIME` parameter tells the library how many microseconds it must wait
  * after programming the WS2812 devices before it can program them from the
  * first LED again. Should none of this make sense, it is highly advised to take
  * a look at [how WS2812 devices are driven](https://www.arrow.com/en/research-and-events/articles/protocol-for-the-ws2812b-programmable-led).
@@ -217,7 +216,7 @@ void loop()
         ws2812 ws2812_dev;          ///< Device struct
  * @endcode
  *
- * In the top definition we create an array that will tell the driver which pins
+ * In the top definition we create an array that will tell the library which pins
  * are used to drive WS2812 devices.
  * 
  * In the middle definition we create an array of RGB values equal to the number of LEDs.
@@ -271,12 +270,12 @@ void loop()
  * Now that the LED array has been filled with white, all that is left is to
  * transmit its values to the WS2812 device(s):
  * @code
-        ws2812_prep_tx(&ws2812_dev);           // Prepare driver to transmit data
+        ws2812_prep_tx(&ws2812_dev);           // Prepare to transmit data
         ws2812_tx(&ws2812_dev, leds, N_LEDS);  // Transmit array of rgb values to the device
         ws2812_close_tx(&ws2812_dev);          // Close transmission
  * @endcode
  * 
- * First, we call ws2812_prep_tx() to prepare the driver and the device object
+ * First, we call ws2812_prep_tx() to prepare the host device and the device object
  * for data tranmission. Following the ws2812_prep_tx() call we then transmit 
  * the rgb values of the RGB array to the WS2812 device(s). Finally, once we are
  * done transmitting, we proceed to close the tranmission. The WS2812 device(s)

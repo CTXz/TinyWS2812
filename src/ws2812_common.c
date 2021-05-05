@@ -21,9 +21,9 @@
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 
- * @brief Common driver code shared accross all supported platforms.
+ * @brief Common code shared accross all supported platforms.
  * 
- * The following file holds the Tiny-WS2812 driver code for AVR chips.
+ * The following file holds the Tiny-WS2812 code used throughout all platforms.
  */
 
 #include <stdio.h>

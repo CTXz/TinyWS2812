@@ -32,13 +32,13 @@
 #pragma once
 
 /**
- * @brief Enum to tell the driver about the WS2812's color order.
+ * @brief Enum to specify the WS2812 device's color order.
  *
  * Unfortunately there is no clear standard on sequential color
  * order of WS2812 LEDs, some are intuitively programmed in
  * RGB order, however, many, if not the majority, are programmed
  * in GRB oder. As there is automatic way to identify the correct
- * color order, it must be manually provided in the driver configuration
+ * color order, it must be manually provided in the device configuration
  * with this enum.
  */
 typedef enum {

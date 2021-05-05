@@ -9,7 +9,7 @@ digraph "examples/avr/blink_loop.c"
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="util/delay.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="ws2812.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812_8h.html",tooltip="Exposes the Tiny-WS2812 driver interface."];
+  Node4 [label="ws2812.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812_8h.html",tooltip="Exposes the Tiny-WS2812 library interface."];
   Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="ws2812_avr.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__avr_8h.html",tooltip="Provides AVR platform specific definitions."];
   Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

@@ -60,10 +60,10 @@ int main()
 {
         uint8_t pins[] = DATA_PINS; // Data pins
         ws2812_rgb leds[N_LEDS];    // RGB array which represents the LEDs
-        ws2812_cfg cfg;             // Driver configurationn
+        ws2812_cfg cfg;             // Device configurationn
         ws2812 ws2812_dev;          // Device struct
 
-        // Configure the driver
+        // Configure the WS2812 device struct
         cfg.port = &DATA_PINS_PORT;
         cfg.ddr = &DATA_PINS_DDR;
         cfg.pins = pins;
@@ -85,7 +85,7 @@ int main()
                         leds[i].b = 255;              
                 }
 
-                ws2812_prep_tx(&ws2812_dev);          // Prepare driver to transmit data
+                ws2812_prep_tx(&ws2812_dev);          // Prepare to transmit data
                 ws2812_tx(&ws2812_dev, leds, N_LEDS); // Transmit array of rgb values to the device
                 ws2812_close_tx(&ws2812_dev);         // Close transmission
 
@@ -99,7 +99,7 @@ int main()
                         leds[i].b = 0;
                 }
 
-                ws2812_prep_tx(&ws2812_dev);           // Prepare driver to transmit data
+                ws2812_prep_tx(&ws2812_dev);           // Prepare to transmit data
                 ws2812_tx(&ws2812_dev, leds, N_LEDS);  // Transmit array of rgb values to the device
                 ws2812_close_tx(&ws2812_dev);          // Close transmission
 

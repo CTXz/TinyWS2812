@@ -81,7 +81,7 @@ void setup()
  */
 void loop()
 {
-        // Prepare driver to transmit data
+        // Prepare to transmit data
         ws2812_prep_tx(&ws2812_dev);
 
         // Program all LEDs to white
@@ -96,7 +96,7 @@ void loop()
         // Wait 500ms
         delay(500);
 
-        // Prepare driver to transmit data
+        // Prepare to transmit data
         ws2812_prep_tx(&ws2812_dev);
 
         // Program all LEDs to black (off)

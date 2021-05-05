@@ -63,10 +63,10 @@ ws2812_rgb black = {0, 0 ,0};
 int main()
 {
         uint8_t pins[] = DATA_PINS; // Data pins
-        ws2812_cfg cfg;             // Driver configurationn
+        ws2812_cfg cfg;             // Device configurationn
         ws2812 ws2812_dev;          // Device struct
 
-        // Configure the driver
+        // Configure the WS2812 device struct
         cfg.port = &DATA_PINS_PORT;
         cfg.ddr = &DATA_PINS_DDR;
         cfg.pins = pins;
@@ -81,7 +81,7 @@ int main()
 
         // Blink device
         while (1) {
-                // Prepare driver to transmit data
+                // Prepare to transmit data
                 ws2812_prep_tx(&ws2812_dev);
 
                 // Program all LEDs to white
@@ -96,7 +96,7 @@ int main()
                 // Wait 500ms
                 _delay_ms(500);
 
-                // Prepare driver to transmit data
+                // Prepare to transmit data
                 ws2812_prep_tx(&ws2812_dev);
 
                 // Program all LEDs to black (off)

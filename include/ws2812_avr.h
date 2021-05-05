@@ -69,7 +69,7 @@ typedef struct ws2812_cfg {
  * 
  * The following struct is used to drive one or more WS2812 devices on AVR based devices.
  * It is initialized by the ws2812_config() function and is taken as an argument by practically
- * every function of the TinyWS2812 driver relevant to driving WS2812 devices (ex. ws2812_tx(),
+ * every function of the TinyWS2812 library relevant to driving WS2812 devices (ex. ws2812_tx(),
  * ws2812_prep_tx(), etc...).
  * 
  * @see ws2812_config()

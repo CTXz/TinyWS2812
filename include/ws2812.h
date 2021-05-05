@@ -21,9 +21,9 @@
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 
- * @brief Exposes the Tiny-WS2812 driver interface.
+ * @brief Exposes the Tiny-WS2812 library interface.
  * 
- * The Tiny-WS2812 driver interface initially derives from the
+ * The Tiny-WS2812 library initially derives from the
  * driver code of an open source WS2812 LED controller that I had
  * worked on prior, and provides a nearly barebone interface to
  * communicate with WS2812 LED devices.
@@ -33,23 +33,23 @@
  *      - The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
  * 
  * It has been developed out of the necessity to have an extremely light 
- * weight and flexible cross-platform driver that can be further abstracted
+ * weight and flexible cross-platform library that can be further abstracted
  * and used troughout my WS2812 projects, particullary on MCUs with severe 
  * memory constraints (ex. ATTiny chips), where one cannot just define an RGB
- * array equivalent to the number of LEDs. This drivers purpose is **NOT**
+ * array equivalent to the number of LEDs. This libraries purpose is **NOT**
  * to provide fancy abstractions and functions for color correction, brightness 
  * settings, animations etc.
  * 
- * To summerize, this driver is inteded to:
+ * To summerize, this library is inteded to:
  *      - be used on MCUs with limited computing resources.
  *      - act as a base for more abstract WS2812 libraries.
  *      - be easily portable to other platforms or programming frameworks (ex. Arduino).
  *
- * @note Because the motivation of this driver is to be as barebone as possible,
+ * @note Because the motivation of this library is to be as barebone as possible,
  *      it relies on a superficial understanding of the WS2812 protocol and may
  *      demand an understanding of the host platforms platform (eg. registers etc.).
  *      For quick and simple programming of WS2812 devices, where memory and processing
- *      power are not a big issue, other drivers/libraries should probably be consulted.  
+ *      power are not a big issue, other libraries should probably be consulted.  
  */
 
 #pragma once
@@ -82,7 +82,7 @@
 /**
  * @brief Initializes a rgb map for a given color order. 
  *
- * The following function is intended only to be used for internal driver code, hence
+ * The following function is intended only to be used for internal library code, hence
  * the _ prefix. It fills a 3 element byte array with the necessary offsets to map/convert
  * RGB values to a different color order. For example, setting the order to `rgb` fills the
  * rgb map with `0, 1, 2` and `bgr` fill the rgb map with `2, 1, 0`, etc.
@@ -100,9 +100,9 @@ void _ws2812_get_rgbmap(uint8_t (*rgbmap)[3], ws2812_order order);
 uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config);
 
 /**
- * @brief Prepares the driver for data transmission. 
+ * @brief Prepares the host device for data transmission. 
  *
- * The following function prepares the driver for data transmission.
+ * The following function prepares the host device for data transmission.
  * The exact preperation procedure is platform specific, but typically
  * will involve disabling interrupts, stashing registers that may be
  * modified when communicating to the WS2812 device and potentially 

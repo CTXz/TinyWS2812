@@ -23,7 +23,8 @@
  * 
  * @brief Driver code for AVR chips.
  * 
- * The following file holds the Tiny-WS2812 driver code for AVR chips.
+ * The following file holds the Tiny-WS2812 library code to drive 
+ * WS2812 devices on AVR chips.
  */
 
 #if defined(WS2812_TARGET_PLATFORM_AVR) || defined(WS2812_TARGET_PLATFORM_ARDUINO_AVR)

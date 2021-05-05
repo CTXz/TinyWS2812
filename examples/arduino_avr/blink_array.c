@@ -87,7 +87,7 @@ void loop()
                 leds[i].b = 255;              
         }
 
-        ws2812_prep_tx(&ws2812_dev);           // Prepare driver to transmit data
+        ws2812_prep_tx(&ws2812_dev);           // Prepare to transmit data
         ws2812_tx(&ws2812_dev, leds, N_LEDS);  // Transmit array of rgb values to the device
         ws2812_close_tx(&ws2812_dev);          // Close transmission
 
@@ -101,7 +101,7 @@ void loop()
                 leds[i].b = 0;
         }
 
-        ws2812_prep_tx(&ws2812_dev);          // Prepare driver to transmit data
+        ws2812_prep_tx(&ws2812_dev);          // Prepare to transmit data
         ws2812_tx(&ws2812_dev, leds, N_LEDS); // Transmit array of rgb values to the device
         ws2812_close_tx(&ws2812_dev);         // Close transmission
 
