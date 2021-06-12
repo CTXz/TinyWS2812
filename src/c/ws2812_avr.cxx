@@ -258,11 +258,11 @@ void ws2812_tx_byte(ws2812 *dev, uint8_t byte)
 #pragma GCC pop_options
 
 // Refer to header for documentation
-void ws2812_tx(ws2812 *dev, ws2812_rgb *pxls, size_t n_pxls)
+void ws2812_tx(ws2812 *dev, ws2812_rgb *leds, size_t n_leds)
 {
-        for (size_t i = 0; i < n_pxls; i++) {
+        for (size_t i = 0; i < n_leds; i++) {
                 for (uint8_t j = 0; j < sizeof(dev->rgbmap); j++) {
-                        uint8_t *pxl = (uint8_t *) &(pxls[i]);
+                        uint8_t *pxl = (uint8_t *) &(leds[i]);
                         ws2812_tx_byte(dev, pxl[dev->rgbmap[j]]);
                 }
         }

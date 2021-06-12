@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tiny-WS2812: src/ws2812_avr.c Source File</title>
+<title>Tiny-WS2812: src/c/ws2812_avr.cxx Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,15 +63,15 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3b19ecf29356981f494745fbef7e56bf.html">c</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">ws2812_avr.c</div>  </div>
+<div class="title">ws2812_avr.cxx</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="ws2812__avr_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (C) 2021  Patrick Pedersen</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
@@ -165,7 +165,7 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#ifdef WS2812_TARGET_PLATFORM_AVR</span></div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="ws2812__avr_8c.html#a8069aef456aba6f66b80ac92a4746a32">  116</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#a8069aef456aba6f66b80ac92a4746a32">delay_us</a>(uint8_t us)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">void</span> delay_us(uint8_t us)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        cli();</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; us; i++)</div>
@@ -175,7 +175,7 @@ $(function() {
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">// Refer to header for documentation</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="ws2812_8h.html#ad08c3092fa4ac89001493828d5a4665d">  126</a></span>&#160;uint8_t <a class="code" href="ws2812__avr_8c.html#ad08c3092fa4ac89001493828d5a4665d">ws2812_config</a>(<a class="code" href="structws2812.html">ws2812</a> *dev, <a class="code" href="structws2812__cfg.html">ws2812_cfg</a> config)</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="ws2812_8h.html#ad08c3092fa4ac89001493828d5a4665d">  126</a></span>&#160;uint8_t <a class="code" href="ws2812_8h.html#ad08c3092fa4ac89001493828d5a4665d">ws2812_config</a>(<a class="code" href="structws2812.html">ws2812</a> *dev, <a class="code" href="structws2812__cfg.html">ws2812_cfg</a> config)</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (config.<a class="code" href="structws2812__cfg.html#a2a6404a5d1e6d8829e2abcf5d916715b">n_dev</a> == 0)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">return</span> 1; <span class="comment">// No devices to be driven!</span></div>
@@ -202,13 +202,13 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        dev-&gt;<a class="code" href="structws2812.html#ad04d92a4b1276fbb588960ad009b67b9">masklo</a> = ~pin_msk &amp; *(dev-&gt;<a class="code" href="structws2812.html#af8a9e3c5bbc7cd936d94ad33bca218dd">port</a>);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        dev-&gt;<a class="code" href="structws2812.html#ae191c20dea8f9cca0bb92e9d0431f721">maskhi</a> = pin_msk | *(dev-&gt;<a class="code" href="structws2812.html#af8a9e3c5bbc7cd936d94ad33bca218dd">port</a>);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="ws2812__common_8c.html#abb76184063c2d58324bde5457e32bee0">_ws2812_get_rgbmap</a>(&amp;dev-&gt;<a class="code" href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">rgbmap</a>, config.<a class="code" href="structws2812__cfg.html#ad50d0defcc33c93e648889222b93c1aa">order</a>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="ws2812_8h.html#abb76184063c2d58324bde5457e32bee0">_ws2812_get_rgbmap</a>(&amp;dev-&gt;<a class="code" href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">rgbmap</a>, config.<a class="code" href="structws2812__cfg.html#ad50d0defcc33c93e648889222b93c1aa">order</a>);</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        </div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// Refer to header for documentation</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a8ac53e8d64e1fc6073e85ea0fd80a975">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#a8ac53e8d64e1fc6073e85ea0fd80a975">ws2812_prep_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a8ac53e8d64e1fc6073e85ea0fd80a975">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812_8h.html#a8ac53e8d64e1fc6073e85ea0fd80a975">ws2812_prep_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">if</span> (_prep == <span class="keyword">false</span>) {</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                _sreg_prev = SREG;</div>
@@ -218,12 +218,12 @@ $(function() {
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">// Refer to header for documentation</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a2eb0bca405f4e5cffbed88230fd35038">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a2eb0bca405f4e5cffbed88230fd35038">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812_8h.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#ifdef WS2812_TARGET_PLATFORM_ARDUINO_AVR</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        delayMicroseconds(dev-&gt;<a class="code" href="structws2812.html#aac098f9c6f0f802c066122e0166d6970">rst_time_us</a>);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <a class="code" href="ws2812__avr_8c.html#a8069aef456aba6f66b80ac92a4746a32">delay_us</a>(dev-&gt;<a class="code" href="structws2812.html#aac098f9c6f0f802c066122e0166d6970">rst_time_us</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        delay_us(dev-&gt;<a class="code" href="structws2812.html#aac098f9c6f0f802c066122e0166d6970">rst_time_us</a>);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
@@ -231,7 +231,7 @@ $(function() {
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#pragma GCC push_options</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#pragma GCC optimize (&quot;O0&quot;)</span></div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="ws2812__avr_8c.html#ae286d1f394d345649b3ad08404fcfed5">  191</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#ae286d1f394d345649b3ad08404fcfed5">ws2812_tx_byte</a>(<a class="code" href="structws2812.html">ws2812</a> *dev, uint8_t <span class="keywordtype">byte</span>)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keywordtype">void</span> ws2812_tx_byte(<a class="code" href="structws2812.html">ws2812</a> *dev, uint8_t <span class="keywordtype">byte</span>)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        uint8_t ctr;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
@@ -301,51 +301,50 @@ $(function() {
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#pragma GCC pop_options</span></div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">// Refer to header for documentation</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="ws2812_8h.html#af2db6a7db2e9f0a57921b01037202e15">  261</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#af2db6a7db2e9f0a57921b01037202e15">ws2812_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev, <a class="code" href="structws2812__rgb.html">ws2812_rgb</a> *pxls, <span class="keywordtype">size_t</span> n_pxls)</div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="ws2812_8h.html#af2db6a7db2e9f0a57921b01037202e15">  261</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812_8h.html#af2db6a7db2e9f0a57921b01037202e15">ws2812_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev, <a class="code" href="structws2812__rgb.html">ws2812_rgb</a> *<a class="code" href="arduino__avr_2blink__array_8c.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a>, <span class="keywordtype">size_t</span> n_leds)</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_pxls; i++) {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n_leds; i++) {</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">for</span> (uint8_t j = 0; j &lt; <span class="keyword">sizeof</span>(dev-&gt;<a class="code" href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">rgbmap</a>); j++) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        uint8_t *pxl = (uint8_t *) &amp;(pxls[i]);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        <a class="code" href="ws2812__avr_8c.html#ae286d1f394d345649b3ad08404fcfed5">ws2812_tx_byte</a>(dev, pxl[dev-&gt;<a class="code" href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">rgbmap</a>[j]]);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        uint8_t *pxl = (uint8_t *) &amp;(<a class="code" href="arduino__avr_2blink__array_8c.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a>[i]);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        ws2812_tx_byte(dev, pxl[dev-&gt;<a class="code" href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">rgbmap</a>[j]]);</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                }</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">// Refer to header for documentation</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a0c2ce6b9d36f5c768bfdd781812aea34">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812__avr_8c.html#a0c2ce6b9d36f5c768bfdd781812aea34">ws2812_close_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="ws2812_8h.html#a0c2ce6b9d36f5c768bfdd781812aea34">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="ws2812_8h.html#a0c2ce6b9d36f5c768bfdd781812aea34">ws2812_close_tx</a>(<a class="code" href="structws2812.html">ws2812</a> *dev)</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;{</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span> (_prep == <span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                SREG = _sreg_prev;</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                sei();</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                _prep = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <a class="code" href="ws2812__avr_8c.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a>(dev);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <a class="code" href="ws2812_8h.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a>(dev);</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aws2812__avr_8c_html_a2eb0bca405f4e5cffbed88230fd35038"><div class="ttname"><a href="ws2812__avr_8c.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a></div><div class="ttdeci">void ws2812_wait_rst(ws2812 *dev)</div><div class="ttdoc">Waits for the WS2812 device to reset.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00169">ws2812_avr.c:169</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_ae286d1f394d345649b3ad08404fcfed5"><div class="ttname"><a href="ws2812__avr_8c.html#ae286d1f394d345649b3ad08404fcfed5">ws2812_tx_byte</a></div><div class="ttdeci">void ws2812_tx_byte(ws2812 *dev, uint8_t byte)</div><div class="ttdoc">Transmits a byte of data to the WS2812 device.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00191">ws2812_avr.c:191</a></div></div>
+<div class="ttc" id="aws2812_8h_html_abb76184063c2d58324bde5457e32bee0"><div class="ttname"><a href="ws2812_8h.html#abb76184063c2d58324bde5457e32bee0">_ws2812_get_rgbmap</a></div><div class="ttdeci">void _ws2812_get_rgbmap(uint8_t(*rgbmap)[3], ws2812_order order)</div><div class="ttdoc">Initializes a rgb map for a given color order.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__common_8cxx_source.html#l00043">ws2812_common.cxx:43</a></div></div>
+<div class="ttc" id="aws2812_8h_html_a0c2ce6b9d36f5c768bfdd781812aea34"><div class="ttname"><a href="ws2812_8h.html#a0c2ce6b9d36f5c768bfdd781812aea34">ws2812_close_tx</a></div><div class="ttdeci">void ws2812_close_tx(ws2812 *dev)</div><div class="ttdoc">Closes a WS2812 transmission.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8cxx_source.html#l00272">ws2812_avr.cxx:272</a></div></div>
 <div class="ttc" id="astructws2812_html_aac098f9c6f0f802c066122e0166d6970"><div class="ttname"><a href="structws2812.html#aac098f9c6f0f802c066122e0166d6970">ws2812::rst_time_us</a></div><div class="ttdeci">uint8_t rst_time_us</div><div class="ttdoc">Time required for WS2812 to reset in us.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00080">ws2812_avr.h:80</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html_a9131a1de83995aa8c917e1a3c6ee1fa5"><div class="ttname"><a href="structws2812__cfg.html#a9131a1de83995aa8c917e1a3c6ee1fa5">ws2812_cfg::rst_time_us</a></div><div class="ttdeci">uint8_t rst_time_us</div><div class="ttdoc">Time required for WS2812 to reset in us.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00061">ws2812_avr.h:61</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html"><div class="ttname"><a href="structws2812__cfg.html">ws2812_cfg</a></div><div class="ttdoc">Data structure to configure a WS2812 device struct on AVR platforms.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00049">ws2812_avr.h:49</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_a8069aef456aba6f66b80ac92a4746a32"><div class="ttname"><a href="ws2812__avr_8c.html#a8069aef456aba6f66b80ac92a4746a32">delay_us</a></div><div class="ttdeci">void delay_us(uint8_t us)</div><div class="ttdoc">Halts the program for a given ammount of microseconds.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00116">ws2812_avr.c:116</a></div></div>
+<div class="ttc" id="aws2812_8h_html_a8ac53e8d64e1fc6073e85ea0fd80a975"><div class="ttname"><a href="ws2812_8h.html#a8ac53e8d64e1fc6073e85ea0fd80a975">ws2812_prep_tx</a></div><div class="ttdeci">void ws2812_prep_tx(ws2812 *dev)</div><div class="ttdoc">Prepares the host device for data transmission.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8cxx_source.html#l00159">ws2812_avr.cxx:159</a></div></div>
 <div class="ttc" id="aws2812_8h_html"><div class="ttname"><a href="ws2812_8h.html">ws2812.h</a></div><div class="ttdoc">Exposes the Tiny-WS2812 library interface.</div></div>
 <div class="ttc" id="astructws2812__cfg_html_a68fff035f1137f78fc80e9f9bc0fb831"><div class="ttname"><a href="structws2812__cfg.html#a68fff035f1137f78fc80e9f9bc0fb831">ws2812_cfg::port</a></div><div class="ttdeci">volatile uint8_t * port</div><div class="ttdoc">PORT Register (ex. PORTB, PORTC, PORTD...)</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00052">ws2812_avr.h:52</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_a8ac53e8d64e1fc6073e85ea0fd80a975"><div class="ttname"><a href="ws2812__avr_8c.html#a8ac53e8d64e1fc6073e85ea0fd80a975">ws2812_prep_tx</a></div><div class="ttdeci">void ws2812_prep_tx(ws2812 *dev)</div><div class="ttdoc">Prepares the host device for data transmission.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00159">ws2812_avr.c:159</a></div></div>
 <div class="ttc" id="astructws2812__rgb_html"><div class="ttname"><a href="structws2812__rgb.html">ws2812_rgb</a></div><div class="ttdoc">Data structure to hold RGB color values.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__common_8h_source.html#l00067">ws2812_common.h:67</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_ad08c3092fa4ac89001493828d5a4665d"><div class="ttname"><a href="ws2812__avr_8c.html#ad08c3092fa4ac89001493828d5a4665d">ws2812_config</a></div><div class="ttdeci">uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config)</div><div class="ttdoc">Configures a WS2812 device struct.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00126">ws2812_avr.c:126</a></div></div>
+<div class="ttc" id="aws2812_8h_html_af2db6a7db2e9f0a57921b01037202e15"><div class="ttname"><a href="ws2812_8h.html#af2db6a7db2e9f0a57921b01037202e15">ws2812_tx</a></div><div class="ttdeci">void ws2812_tx(ws2812 *dev, ws2812_rgb *pxls, size_t n_pxls)</div><div class="ttdoc">Transmits RGB values to the provided WS2812 device.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8cxx_source.html#l00261">ws2812_avr.cxx:261</a></div></div>
 <div class="ttc" id="astructws2812_html_ad04d92a4b1276fbb588960ad009b67b9"><div class="ttname"><a href="structws2812.html#ad04d92a4b1276fbb588960ad009b67b9">ws2812::masklo</a></div><div class="ttdeci">uint8_t masklo</div><div class="ttdoc">PORT masks to toggle the data pins low.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00082">ws2812_avr.h:82</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_af2db6a7db2e9f0a57921b01037202e15"><div class="ttname"><a href="ws2812__avr_8c.html#af2db6a7db2e9f0a57921b01037202e15">ws2812_tx</a></div><div class="ttdeci">void ws2812_tx(ws2812 *dev, ws2812_rgb *pxls, size_t n_pxls)</div><div class="ttdoc">Transmits RGB values to the provided WS2812 device.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00261">ws2812_avr.c:261</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html_a2a6404a5d1e6d8829e2abcf5d916715b"><div class="ttname"><a href="structws2812__cfg.html#a2a6404a5d1e6d8829e2abcf5d916715b">ws2812_cfg::n_dev</a></div><div class="ttdeci">uint8_t n_dev</div><div class="ttdoc">Number of WS2812 devices driven.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00063">ws2812_avr.h:63</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html_ae4f693b8495942acae05da3df3bcfa58"><div class="ttname"><a href="structws2812__cfg.html#ae4f693b8495942acae05da3df3bcfa58">ws2812_cfg::pins</a></div><div class="ttdeci">uint8_t * pins</div><div class="ttdoc">Array of pins used to program WS2812 devices (Must share the same PORT! (ex. PB0, PB1,...</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00054">ws2812_avr.h:54</a></div></div>
-<div class="ttc" id="aws2812__common_8c_html_abb76184063c2d58324bde5457e32bee0"><div class="ttname"><a href="ws2812__common_8c.html#abb76184063c2d58324bde5457e32bee0">_ws2812_get_rgbmap</a></div><div class="ttdeci">void _ws2812_get_rgbmap(uint8_t(*rgbmap)[3], ws2812_order order)</div><div class="ttdoc">Initializes a rgb map for a given color order.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__common_8c_source.html#l00043">ws2812_common.c:43</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html_ad50d0defcc33c93e648889222b93c1aa"><div class="ttname"><a href="structws2812__cfg.html#ad50d0defcc33c93e648889222b93c1aa">ws2812_cfg::order</a></div><div class="ttdeci">ws2812_order order</div><div class="ttdoc">Color order (ex. rgb, grb, bgr...)</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00062">ws2812_avr.h:62</a></div></div>
+<div class="ttc" id="aws2812_8h_html_a2eb0bca405f4e5cffbed88230fd35038"><div class="ttname"><a href="ws2812_8h.html#a2eb0bca405f4e5cffbed88230fd35038">ws2812_wait_rst</a></div><div class="ttdeci">void ws2812_wait_rst(ws2812 *dev)</div><div class="ttdoc">Waits for the WS2812 device to reset.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8cxx_source.html#l00169">ws2812_avr.cxx:169</a></div></div>
 <div class="ttc" id="astructws2812_html_a8d961104f06a5bd3f8109f0b6a89f142"><div class="ttname"><a href="structws2812.html#a8d961104f06a5bd3f8109f0b6a89f142">ws2812::rgbmap</a></div><div class="ttdeci">uint8_t rgbmap[3]</div><div class="ttdoc">RGB map to map/convert RGB values to another color order.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00083">ws2812_avr.h:83</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html_a05c7bc58ea6e94f80e5b4b7f0ab3a554"><div class="ttname"><a href="structws2812__cfg.html#a05c7bc58ea6e94f80e5b4b7f0ab3a554">ws2812_cfg::ddr</a></div><div class="ttdeci">volatile uint8_t * ddr</div><div class="ttdoc">Data Direction Register (ex. DDRB, DDRC, DDRD...)</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00053">ws2812_avr.h:53</a></div></div>
-<div class="ttc" id="aws2812__avr_8c_html_a0c2ce6b9d36f5c768bfdd781812aea34"><div class="ttname"><a href="ws2812__avr_8c.html#a0c2ce6b9d36f5c768bfdd781812aea34">ws2812_close_tx</a></div><div class="ttdeci">void ws2812_close_tx(ws2812 *dev)</div><div class="ttdoc">Closes a WS2812 transmission.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8c_source.html#l00272">ws2812_avr.c:272</a></div></div>
 <div class="ttc" id="astructws2812_html_af8a9e3c5bbc7cd936d94ad33bca218dd"><div class="ttname"><a href="structws2812.html#af8a9e3c5bbc7cd936d94ad33bca218dd">ws2812::port</a></div><div class="ttdeci">volatile uint8_t * port</div><div class="ttdoc">PORT register of pins used to drive the WS2812 device(s).</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00079">ws2812_avr.h:79</a></div></div>
+<div class="ttc" id="aws2812_8h_html_ad08c3092fa4ac89001493828d5a4665d"><div class="ttname"><a href="ws2812_8h.html#ad08c3092fa4ac89001493828d5a4665d">ws2812_config</a></div><div class="ttdeci">uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config)</div><div class="ttdoc">Configures a WS2812 device struct.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8cxx_source.html#l00126">ws2812_avr.cxx:126</a></div></div>
 <div class="ttc" id="astructws2812_html"><div class="ttname"><a href="structws2812.html">ws2812</a></div><div class="ttdoc">WS2812 device struct to drive one or more WS2812 devices on AVR based platforms.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00078">ws2812_avr.h:78</a></div></div>
+<div class="ttc" id="aarduino__avr_2blink__array_8c_html_a69b7b102ebcf421b7170ebe2926126e4"><div class="ttname"><a href="arduino__avr_2blink__array_8c.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a></div><div class="ttdeci">ws2812_rgb leds[N_LEDS]</div><div class="ttdoc">RGB array which represents the LEDs.</div><div class="ttdef"><b>Definition:</b> <a href="arduino__avr_2blink__array_8c_source.html#l00056">blink_array.c:56</a></div></div>
 <div class="ttc" id="astructws2812_html_ae191c20dea8f9cca0bb92e9d0431f721"><div class="ttname"><a href="structws2812.html#ae191c20dea8f9cca0bb92e9d0431f721">ws2812::maskhi</a></div><div class="ttdeci">uint8_t maskhi</div><div class="ttdoc">PORT masks to toggle the data pins high.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00081">ws2812_avr.h:81</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -250,4 +250,4 @@ In the example above we have used an RGB array to set the colors of one or more 
 
 -------------------------------
 
-Updated on  5 May 2021 at 21:58:34 CEST
+Updated on 12 June 2021 at 15:32:12 CEST
