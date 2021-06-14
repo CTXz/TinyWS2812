@@ -91,28 +91,28 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="ws2812_8h.html">ws2812.h</a>&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classws2812__cpp.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="classws2812__cpp.html">ws2812_cpp</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classws2812__cpp.html#ad7be953d924973a69fe07f4c04d84f81">ws2812_cpp</a>(<a class="code" href="structws2812__cfg.html">ws2812_cfg</a> config, uint8_t *ret);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="structws2812.html">ws2812</a> _ws2812; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a60ee6238212f56bc0295bfebfe98cf75">prep_tx</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a7524c834845f6fa3e3d166a3e7c5e268">tx</a>(<a class="code" href="structws2812__rgb.html">ws2812_rgb</a> *<a class="code" href="arduino__avr_2blink__cpp_8cxx.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a>, <span class="keywordtype">size_t</span> n_leds);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a0bc497b0516700f46e133d72c0ed68a3">wait_rst</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a1aa16ec73233609b708cf752e01a492e">close_tx</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classws2812__cpp.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="classws2812__cpp.html">ws2812_cpp</a> {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classws2812__cpp.html#ad7be953d924973a69fe07f4c04d84f81">ws2812_cpp</a>(<a class="code" href="structws2812__cfg.html">ws2812_cfg</a> config, uint8_t *ret);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="structws2812.html">ws2812</a> _ws2812; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a60ee6238212f56bc0295bfebfe98cf75">prep_tx</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a7524c834845f6fa3e3d166a3e7c5e268">tx</a>(<a class="code" href="structws2812__rgb.html">ws2812_rgb</a> *<a class="code" href="arduino__avr_2blink__cpp_8cxx.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a>, <span class="keywordtype">size_t</span> n_leds);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a0bc497b0516700f46e133d72c0ed68a3">wait_rst</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classws2812__cpp.html#a1aa16ec73233609b708cf752e01a492e">close_tx</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassws2812__cpp_html_a60ee6238212f56bc0295bfebfe98cf75"><div class="ttname"><a href="classws2812__cpp.html#a60ee6238212f56bc0295bfebfe98cf75">ws2812_cpp::prep_tx</a></div><div class="ttdeci">void prep_tx()</div><div class="ttdoc">Wraps around the ws2812_prep_tx() function.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__cpp_8cxx_source.html#l00037">ws2812_cpp.cxx:37</a></div></div>
-<div class="ttc" id="aclassws2812__cpp_html"><div class="ttname"><a href="classws2812__cpp.html">ws2812_cpp</a></div><div class="ttdoc">A C++ wrapper for the Tiny-WS2812 interface.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__cpp_8h_source.html#l00035">ws2812_cpp.h:35</a></div></div>
+<div class="ttc" id="aclassws2812__cpp_html"><div class="ttname"><a href="classws2812__cpp.html">ws2812_cpp</a></div><div class="ttdoc">A C++ wrapper for the Tiny-WS2812 interface.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__cpp_8h_source.html#l00039">ws2812_cpp.h:39</a></div></div>
 <div class="ttc" id="aclassws2812__cpp_html_ad7be953d924973a69fe07f4c04d84f81"><div class="ttname"><a href="classws2812__cpp.html#ad7be953d924973a69fe07f4c04d84f81">ws2812_cpp::ws2812_cpp</a></div><div class="ttdeci">ws2812_cpp(ws2812_cfg config, uint8_t *ret)</div><div class="ttdoc">Constructs a ws2812_cpp object from a ws2812_cfg struct and returns 0 on success.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__cpp_8cxx_source.html#l00032">ws2812_cpp.cxx:32</a></div></div>
 <div class="ttc" id="aclassws2812__cpp_html_a0bc497b0516700f46e133d72c0ed68a3"><div class="ttname"><a href="classws2812__cpp.html#a0bc497b0516700f46e133d72c0ed68a3">ws2812_cpp::wait_rst</a></div><div class="ttdeci">void wait_rst()</div><div class="ttdoc">Wraps around the ws2812_rst() function.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__cpp_8cxx_source.html#l00047">ws2812_cpp.cxx:47</a></div></div>
 <div class="ttc" id="astructws2812__cfg_html"><div class="ttname"><a href="structws2812__cfg.html">ws2812_cfg</a></div><div class="ttdoc">Data structure to configure a WS2812 device struct on AVR platforms.</div><div class="ttdef"><b>Definition:</b> <a href="ws2812__avr_8h_source.html#l00049">ws2812_avr.h:49</a></div></div>

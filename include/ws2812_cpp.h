@@ -31,6 +31,10 @@
 /**
  * @brief A C++ wrapper for the Tiny-WS2812 interface
  *
+ * The following class defines a C++ wrapper for the Tiny-WS2812 interface.
+ * For an usage example of the C++ wrapper, refer to the @ref examples/arduino_avr/blink_cpp.cxx
+ * "blink_cpp example for the Arduino Framework" or the 
+ * @ref examples/avr/blink_cpp.cxx "blink_cpp example for barebone AVR programming"
  */
 class ws2812_cpp {
 public:
