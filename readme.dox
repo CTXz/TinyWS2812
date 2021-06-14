@@ -42,6 +42,11 @@
  * and AVR based Arduino devices). The platform specific library implementations can
  * be found in the @ref src directory. To use this library throughout your project, only
  * an understanding of the library interface is required.
+ *
+ * For C++ projects, the WS2812 library also offers a @ref ws2812_cpp "WS2812 C++ wrapper class".
+ * For an usage example of the C++ wrapper, refer to the @ref examples/arduino_avr/blink_cpp.cxx
+ * "blink_cpp example for the Arduino Framework" or the 
+ * @ref examples/avr/blink_cpp.cxx "blink_cpp example for barebone AVR programming"
  * 
  * To make the use of this library a breeze, all source files have been documented and
  * referenced using doxygen.

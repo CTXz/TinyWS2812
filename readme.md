@@ -33,6 +33,8 @@ Because the motivation of this library is to be as barebone as possible, it reli
 
 The WS2812 library code is split into two parts. The first part is the abstract library interface defined in ws2812.h. The second part is the platform specific driver code that implements the interface for different platforms (at the moment only barebone AVR and AVR based Arduino devices). The platform specific library implementations can be found in the src directory. To use this library throughout your project, only an understanding of the library interface is required.
 
+For C++ projects, the WS2812 library also offers a WS2812 C++ wrapper class. For an usage example of the C++ wrapper, refer to the blink_cpp example for the Arduino Framework or the blink_cpp example for barebone AVR programming
+
 To make the use of this library a breeze, all source files have been documented and referenced using doxygen.
 
 
@@ -250,4 +252,4 @@ In the example above we have used an RGB array to set the colors of one or more 
 
 -------------------------------
 
-Updated on 12 June 2021 at 15:32:12 CEST
+Updated on 14 June 2021 at 12:41:20 CEST

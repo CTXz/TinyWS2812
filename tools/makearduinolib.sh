@@ -21,16 +21,16 @@ cd "$TMP_LIB_DIR"
 mv include/* src/
 rm -r include
 
-find examples/ -name "*.c" -print0 | while read -d $'\0' file
+find examples/ -name "*.cxx" -print0 | while read -d $'\0' file
 do
         example_path="$(echo $file | sed 's/\.c//g')"
         mkdir "$example_path" 
-        mv "$file" "$example_path/$(basename -- "$file" | sed 's/\.c/.ino/g')"
+        mv "$file" "$example_path/$(basename -- "$file" | sed 's/\.cxx/.ino/g')"
 done
 
-find src/ -name "*.c" -print0 | while read -d $'\0' file
+find src/ -name "*.cxx" -print0 | while read -d $'\0' file
 do
-        mv "$file" "$(echo $file | sed 's/\.c/.cpp/g')"
+        mv "$file" "$(echo $file | sed 's/\.cxx/.cpp/g')"
 done
 
 i=0
