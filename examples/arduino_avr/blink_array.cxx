@@ -20,9 +20,8 @@
  * @file blink_array.cxx
  * @author Patrick Pedersen
  * @date 2021-04-09
- * @brief Blinks one or more WS2812 devices using a RGB array. 
  * 
- * See 
+ * @brief Blinks one or more WS2812 devices using a RGB array. 
  * 
  * The following example showcases how the Tiny-WS2812 library can
  * be used on AVR platforms supporting the Arduino framework to blink

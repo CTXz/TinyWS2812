@@ -20,6 +20,7 @@
  * @file blink_cpp.cxx
  * @author Patrick Pedersen
  * @date 2021-04-09
+ * 
  * @brief C++ Wrapper implementation of blink_array.cxx  
  * 
  * This example showcases the @ref blink_array.cxx "blink array example" on AVR platforms which support
