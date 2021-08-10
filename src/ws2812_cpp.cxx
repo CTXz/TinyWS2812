@@ -17,7 +17,7 @@
  */
 
 /**
- * @file ws2812_cpp.cpp
+ * @file ws2812_cpp.cxx
  * @author Patrick Pedersen
  * @date 2021-05-12
  * 

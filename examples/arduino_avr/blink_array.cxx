@@ -17,7 +17,7 @@
  */
 
 /**
- * @file blink_array.c
+ * @file blink_array.cxx
  * @author Patrick Pedersen
  * @date 2021-04-09
  * @brief Blinks one or more WS2812 devices using a RGB array. 

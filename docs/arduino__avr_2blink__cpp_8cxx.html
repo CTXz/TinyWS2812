@@ -76,7 +76,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Blinks one or more WS2812 devices using a RGB array.  
+<p>C++ Wrapper implementation of blink_array.cxx <br  />
+  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="ws2812__cpp_8h_source.html">ws2812_cpp.h</a>&gt;</code><br />
@@ -117,11 +118,11 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a8bb65f860d3ee6bbb0dfe302cb9605da"><td class="memItemLeft" align="right" valign="top"><a id="a8bb65f860d3ee6bbb0dfe302cb9605da"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arduino__avr_2blink__cpp_8cxx.html#a8bb65f860d3ee6bbb0dfe302cb9605da">pins</a> [] = <a class="el" href="arduino__avr_2blink__cpp_8cxx.html#ab2f896688f5d7b8efa2b810b4640503d">DATA_PINS</a></td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arduino__avr_2blink__cpp_8cxx.html#a8bb65f860d3ee6bbb0dfe302cb9605da">pins</a> [] = <a class="el" href="avr_2blink__loop_8cxx.html#ab2f896688f5d7b8efa2b810b4640503d">DATA_PINS</a></td></tr>
 <tr class="memdesc:a8bb65f860d3ee6bbb0dfe302cb9605da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data pins. <br /></td></tr>
 <tr class="separator:a8bb65f860d3ee6bbb0dfe302cb9605da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69b7b102ebcf421b7170ebe2926126e4"><td class="memItemLeft" align="right" valign="top"><a id="a69b7b102ebcf421b7170ebe2926126e4"></a>
-<a class="el" href="structws2812__rgb.html">ws2812_rgb</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arduino__avr_2blink__cpp_8cxx.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a> [<a class="el" href="arduino__avr_2blink__cpp_8cxx.html#ae141ceb34938aab59b3009736e72a427">N_LEDS</a>]</td></tr>
+<a class="el" href="structws2812__rgb.html">ws2812_rgb</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="arduino__avr_2blink__cpp_8cxx.html#a69b7b102ebcf421b7170ebe2926126e4">leds</a> [<a class="el" href="avr_2blink__loop_8cxx.html#ae141ceb34938aab59b3009736e72a427">N_LEDS</a>]</td></tr>
 <tr class="memdesc:a69b7b102ebcf421b7170ebe2926126e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGB array which represents the LEDs. <br /></td></tr>
 <tr class="separator:a69b7b102ebcf421b7170ebe2926126e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10761bda7f663f1fa12baf0bb562a4f0"><td class="memItemLeft" align="right" valign="top"><a id="a10761bda7f663f1fa12baf0bb562a4f0"></a>
@@ -130,9 +131,10 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a
 <tr class="separator:a10761bda7f663f1fa12baf0bb562a4f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Blinks one or more WS2812 devices using a RGB array. </p>
+<div class="textblock"><p>C++ Wrapper implementation of blink_array.cxx <br  />
+ </p>
 <dl class="section author"><dt>Author</dt><dd>Patrick Pedersen </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2021-04-09 This example showcases the blink array example on AVR platforms which support the Arduino Framework, using the C++ wrapper of the Tiny-WS2812 driver. The purpose of this example is to merely showcase the differences between the C++ wrapper and the C interface. For a more detailed description of the functionality, consult the blink array example written in the C interface.</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2021-04-09 This example showcases the <a class="el" href="avr_2blink__array_8cxx.html">blink array example</a> on AVR platforms which support the Arduino Framework, using the C++ wrapper of the Tiny-WS2812 driver. The purpose of this example is to merely showcase the differences between the C++ wrapper and the C interface. For a more detailed description of the functionality, consult the <a class="el" href="avr_2blink__array_8cxx.html">blink array example written in the C interface</a>.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Please ensure that the WS2812_TARGET_PLATFORM_ARDUINO_AVR macro is defined during compilation. This can either be done by specifying <code>-DWS2812_TARGET_PLATFORM_ARDUINO_AVR</code> in the build flags, or by uncommenting the <code>#define WS2812_TARGET_PLATFORM_ARDUINO_AVR</code> directive at the top of this file. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="arduino__avr_2blink__cpp_8cxx_source.html">blink_cpp.cxx</a>.</p>

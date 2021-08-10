@@ -5,9 +5,9 @@ digraph "include/ws2812_cpp.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="include/ws2812_cpp.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="C++ Wrapper for the Tiny-WS2812 interface."];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="src/ws2812_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__cpp_8cxx_source.html",tooltip=" "];
+  Node2 [label="src/ws2812_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__cpp_8cxx.html",tooltip="Defines functions for the Tiny-WS2812 C++ interface wrapper."];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="examples/arduino_avr\l/blink_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$arduino__avr_2blink__cpp_8cxx.html",tooltip="Blinks one or more WS2812 devices using a RGB array."];
+  Node3 [label="examples/arduino_avr\l/blink_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$arduino__avr_2blink__cpp_8cxx.html",tooltip="C++ Wrapper implementation of blink_array.cxx"];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="examples/avr/blink\l_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$avr_2blink__cpp_8cxx_source.html",tooltip=" "];
+  Node4 [label="examples/avr/blink\l_cpp.cxx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$avr_2blink__cpp_8cxx.html",tooltip="C++ Wrapper implementation of blink_array.cxx."];
 }

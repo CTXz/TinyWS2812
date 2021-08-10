@@ -17,7 +17,7 @@
  */
 
 /**
- * @file ws2812_avr.c
+ * @file ws2812_avr.cxx
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 

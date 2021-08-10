@@ -17,11 +17,11 @@
  */
 
 /**
- * @file blink_array.c
+ * @file blink_cpp.cxx
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 
- * @brief Blinks one or more WS2812 devices using a RGB array. 
+ * @brief C++ Wrapper implementation of blink_array.cxx 
  * 
  * This example showcases the @ref blink_array.cxx "blink array example" on 
  * AVR platforms using the C++ wrapper of the Tiny-WS2812 driver.
