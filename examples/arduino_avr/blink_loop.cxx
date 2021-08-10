@@ -21,7 +21,7 @@
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 
- * @brief Blinks one or more WS2812 devices using a more memory efficient method than the blink_array.c example. 
+ * @brief Blinks one or more WS2812 devices using a more memory efficient method than the blink_array.cxx example. 
  * 
  * @details The following example showcases how the Tiny-WS2812 library can
  * be used on AVR platforms supporting the Arduino framework to blink

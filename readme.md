@@ -84,7 +84,7 @@ Perhaps you may be wondering what the difference it makes to build for the bareb
 
 ## Learning by example: Blinking one or more WS2812 devices
 
-In the following section we will working our way through the examples/arduino_avr/blink_array.c example. We assume our target platform to be ARDUINO_AVR, however most of the library specific code is the same across all platforms. Platform specific differences will be indicated.
+In the following section we will working our way through the examples/arduino_avr/blink_array.cxx example. We assume our target platform to be ARDUINO_AVR, however most of the library specific code is the same across all platforms. Platform specific differences will be indicated.
 
 
 
@@ -252,4 +252,4 @@ In the example above we have used an RGB array to set the colors of one or more 
 
 -------------------------------
 
-Updated on 10 August 2021 at 03:31:28 CEST
+Updated on 10 August 2021 at 03:35:22 CEST

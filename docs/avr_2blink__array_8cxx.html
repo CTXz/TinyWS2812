@@ -125,7 +125,7 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Patrick Pedersen </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-04-09</dd></dl>
 <p>The following example showcases how the Tiny-WS2812 library can be used on AVR platforms to blink an entire WS2812 device in white. In this rather memory expensive example, we achieve this by simply creating a rgb array equal to the number of LEDs on the WS2812 device, whose values we then transmit to the device using the <a class="el" href="ws2812__avr_8cxx.html#a910f8836ea93491a427642d1a6f631d4" title="Transmits RGB values to the provided WS2812 device.">ws2812_tx()</a> function.</p>
-<p>For a more memory efficient method, take a look at the blink_loop.c example.</p>
+<p>For a more memory efficient method, take a look at the blink_loop.cxx example.</p>
 <dl class="section note"><dt>Note</dt><dd>Please ensure that the WS2812_TARGET_PLATFORM_AVR macro is defined during compilation. This can either be done by specifying -DWS2812_TARGET_PLATFORM_AVR in the build flags, or by uncommenting the define WS2812_TARGET_PLATFORM_AVR directive below. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="avr_2blink__array_8cxx_source.html">blink_array.cxx</a>.</p>

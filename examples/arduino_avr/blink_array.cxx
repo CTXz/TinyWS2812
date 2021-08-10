@@ -30,7 +30,7 @@
  * number of LEDs on the WS2812 device, whose values we then transmit
  * to the device using the ws2812_tx() function.
  *
- * For a more memory efficient method, take a look at the blink_loop.c
+ * For a more memory efficient method, take a look at the blink_loop.cxx
  * example.
  * 
  * @note Please ensure that the WS2812_TARGET_PLATFORM_ARDUINO_AVR macro
