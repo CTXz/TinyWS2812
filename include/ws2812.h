@@ -70,6 +70,14 @@
 #include "ws2812_avr.h"
 #endif
 
+#ifdef WS2812_TARGET_PLATFORM_STM8S
+#ifdef _WS2812_TARGET_PLATFORM_DEFINED
+#error "Multiple target platforms defined!"
+#endif
+#define _WS2812_TARGET_PLATFORM_DEFINED
+#include "ws2812_stm8s.h"
+#endif
+
 #ifndef _WS2812_TARGET_PLATFORM_DEFINED
 #error "No target platform defined!"
 #endif
@@ -97,7 +105,7 @@ void _ws2812_get_rgbmap(uint8_t (*rgbmap)[3], ws2812_order order);
  * using a @ref ws2812_cfg "ws2812_cfg configuration struct".
  *
  */
-uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config);
+uint8_t ws2812_config(ws2812 *dev, ws2812_cfg *cfg);
 
 /**
  * @brief Prepares the host device for data transmission. 

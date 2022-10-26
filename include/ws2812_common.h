@@ -67,3 +67,5 @@ typedef enum {
 typedef struct ws2812_rgb {
         uint8_t r,g,b;
 } ws2812_rgb;
+
+void _ws2812_get_rgbmap(uint8_t (*rgbmap)[3], ws2812_order order);
