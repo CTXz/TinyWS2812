@@ -68,8 +68,6 @@ volatile static uint16_t _us_loops_remaining;
  */
 static void delay_us(uint8_t us)
 {
-	disableInterrupts();
-
 	_us_loops_remaining = (us * LOOPS_PER_US) - LDW_OVERHEAD;
 
 	__asm
@@ -79,8 +77,6 @@ static void delay_us(uint8_t us)
 		jrne 0000$			// 1-2 Cycles
 
 	__endasm;
-
-	enableInterrupts();
 }
 
 // Refer to header for documentation
@@ -117,8 +113,6 @@ void ws2812_prep_tx(ws2812 *dev)
 	_mask_lo = dev->masklo;
 	
 	_prep = true;
-
-	disableInterrupts();
 }
 
 // Refer to header for documentation
@@ -269,7 +263,6 @@ void ws2812_close_tx(ws2812 *dev)
 	if (_prep == false)
 		return;
 
-	enableInterrupts();
 	_prep = false;
         ws2812_wait_rst(dev);
 }
