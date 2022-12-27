@@ -118,7 +118,8 @@ void ws2812_prep_tx(ws2812 *dev)
 // Refer to header for documentation
 void ws2812_wait_rst(ws2812 *dev)
 {
-	delay_us(dev->rst_time_us);
+	if (dev->rst_time_us)
+		delay_us(dev->rst_time_us);
 }
 
 /**
