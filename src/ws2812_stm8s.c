@@ -237,11 +237,12 @@ static inline void ws2812_tx_byte(uint8_t byte)
 {
 	for (uint8_t i = 0; i < 8; i++)
 	{
+		disableInterrupts();
 		if (byte & 0b10000000) // Tests every bit in the byte
 			ws2812_tx_bit_1();
 		else
 			ws2812_tx_bit_0();
-
+		enableInterrupts();
 		byte <<= 1;
 	}
 }
