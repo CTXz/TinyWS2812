@@ -7,19 +7,19 @@
  *
  * @section intro_sec Introduction
  * 
- * The Tiny-WS2812 library initially derives from the driver code
+ * The Tiny-WS2812 library initially derived from the driver code
  * of an open source WS2812 LED controller that I had worked on prior,
  * and provides a nearly barebone interface to communicate with WS2812 devices.
  * 
  * The following platforms and frameworks are currently supported:
  *      - Barebone AVR
  *      - The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
- *      - STM8S
+ *      - STM8S (With SPL)
  * 
  * It has been developed out of the necessity to have an extremely light 
  * weight and flexible cross-platform library that can be further abstracted
  * and used troughout my WS2812 projects, particullary on MCUs with severe 
- * memory constraints (ex. ATTiny chips), where one cannot just define an RGB
+ * memory constraints (ex. ATTiny and STM8S chips), where one cannot just define an RGB
  * array equivalent to the number of LEDs. This libraries purpose is **NOT**
  * to provide fancy abstractions and functions for color correction, brightness 
  * settings, animations etc.
@@ -31,23 +31,31 @@
  *
  * @note Because the motivation of this library is to be as barebone as possible,
  *      it relies on a superficial understanding of the WS2812 protocol and may
- *      demand an understanding of the host platforms platform (eg. registers etc.).
- *      For quick and simple programming of WS2812 devices, where memory and processing
- *      power are not a big issue, other libraries should probably be consulted.
+ *      demand a more technical and in-depth understanding of the host platforms platform
+ *      (eg. registers etc.). For quick and simple programming of WS2812 devices, where 
+ *      memory and processing power are not a big issue, other libraries should probably 
+ *      be consulted instead.
+ * 
+ * It is perhaps also noteworthy to mention that this library provides a pretty decent base
+ * to implement more abstract WS2812 libraries for the STM8S platform, which is fairly sparse
+ * in terms of available libraries. Futher, it has come to my notice that the few WS2812 libraries
+ * that are available for the STM8S at the time of writing often lack documentation.
  * 
  * @section overview_sec Overview
  * 
  * The WS2812 library code is split into two parts. The first part is the abstract library
  * interface defined in ws2812.h. The second part is the platform specific driver code that
- * implements the interface for different platforms (at the moment only barebone AVR 
- * and AVR based Arduino devices). The platform specific library implementations can
- * be found in the @ref src directory. To use this library throughout your project, only
+ * implements the interface for different platforms. The platform specific library implementations 
+ * can be found in the @ref src directory. To use this library throughout your project, only
  * an understanding of the library interface is required.
  *
  * For C++ projects, the WS2812 library also offers a @ref ws2812_cpp "WS2812 C++ wrapper class".
  * For an usage example of the C++ wrapper, refer to the @ref examples/arduino_avr/blink_cpp.cpp
  * "blink_cpp example for the Arduino Framework" or the 
  * @ref examples/avr/blink_cpp.cpp "blink_cpp example for barebone AVR programming"
+ * 
+ * @note Due to the fact that STM8S target was written with SDCC in mind, the C++ wrapper is not
+ * available for the STM8S platform.
  * 
  * To make the use of this library a breeze, all source files have been documented and
  * referenced using doxygen.
@@ -103,6 +111,10 @@
  * and the differences in the library configuration struct (ws2812_cfg, more on that later), 
  * which is platform specific and is used to configure various library parameters (data output
  * pin, reset time, color order etc.).
+ *
+ * As for STM8S builds: The STM8S target currently requires the Standard Peripheral Library (SPL) 
+ * to be included. In the future, there will likely be a version of the library that does not require
+ * the SPL.
  * 
  * @subsection avr_example_sec Learning by example: Blinking one or more WS2812 devices
  * In the following section we will working our way through the examples/arduino_avr/blink_array.c example.

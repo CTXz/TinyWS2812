@@ -81,23 +81,25 @@ $(function() {
 <div class="textblock"><p>Welcome to the Tiny-WS2812 documentation.</p>
 <h1><a class="anchor" id="intro_sec"></a>
 Introduction</h1>
-<p>The Tiny-WS2812 library initially derives from the driver code of an open source WS2812 LED controller that I had worked on prior, and provides a nearly barebone interface to communicate with WS2812 devices.</p>
+<p>The Tiny-WS2812 library initially derived from the driver code of an open source WS2812 LED controller that I had worked on prior, and provides a nearly barebone interface to communicate with WS2812 devices.</p>
 <p>The following platforms and frameworks are currently supported:</p><ul>
 <li>Barebone AVR</li>
 <li>The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))</li>
-<li>STM8S</li>
+<li>STM8S (With SPL)</li>
 </ul>
-<p>It has been developed out of the necessity to have an extremely light weight and flexible cross-platform library that can be further abstracted and used troughout my WS2812 projects, particullary on MCUs with severe memory constraints (ex. ATTiny chips), where one cannot just define an RGB array equivalent to the number of LEDs. This libraries purpose is <b>NOT</b> to provide fancy abstractions and functions for color correction, brightness settings, animations etc.</p>
+<p>It has been developed out of the necessity to have an extremely light weight and flexible cross-platform library that can be further abstracted and used troughout my WS2812 projects, particullary on MCUs with severe memory constraints (ex. ATTiny and STM8S chips), where one cannot just define an RGB array equivalent to the number of LEDs. This libraries purpose is <b>NOT</b> to provide fancy abstractions and functions for color correction, brightness settings, animations etc.</p>
 <p>To summerize, this library is inteded to:</p><ul>
 <li>be used on MCUs with limited computing resources.</li>
 <li>act as a base for more abstract WS2812 libraries.</li>
 <li>be easily portable to other platforms or programming frameworks (ex. Arduino, STM8S).</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Because the motivation of this library is to be as barebone as possible, it relies on a superficial understanding of the WS2812 protocol and may demand an understanding of the host platforms platform (eg. registers etc.). For quick and simple programming of WS2812 devices, where memory and processing power are not a big issue, other libraries should probably be consulted.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Because the motivation of this library is to be as barebone as possible, it relies on a superficial understanding of the WS2812 protocol and may demand a more technical and in-depth understanding of the host platforms platform (eg. registers etc.). For quick and simple programming of WS2812 devices, where memory and processing power are not a big issue, other libraries should probably be consulted instead.</dd></dl>
+<p>It is perhaps also noteworthy to mention that this library provides a pretty decent base to implement more abstract WS2812 libraries for the STM8S platform, which is fairly sparse in terms of available libraries. Futher, it has come to my notice that the few WS2812 libraries that are available for the STM8S at the time of writing often lack documentation.</p>
 <h1><a class="anchor" id="overview_sec"></a>
 Overview</h1>
-<p>The WS2812 library code is split into two parts. The first part is the abstract library interface defined in <a class="el" href="ws2812_8h.html" title="Exposes the Tiny-WS2812 library interface.">ws2812.h</a>. The second part is the platform specific driver code that implements the interface for different platforms (at the moment only barebone AVR and AVR based Arduino devices). The platform specific library implementations can be found in the <a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a> directory. To use this library throughout your project, only an understanding of the library interface is required.</p>
+<p>The WS2812 library code is split into two parts. The first part is the abstract library interface defined in <a class="el" href="ws2812_8h.html" title="Exposes the Tiny-WS2812 library interface.">ws2812.h</a>. The second part is the platform specific driver code that implements the interface for different platforms. The platform specific library implementations can be found in the <a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a> directory. To use this library throughout your project, only an understanding of the library interface is required.</p>
 <p>For C++ projects, the WS2812 library also offers a WS2812 C++ wrapper class. For an usage example of the C++ wrapper, refer to the <a class="el" href="arduino__avr_2blink__cpp_8cpp.html">blink_cpp example for the Arduino Framework</a> or the <a class="el" href="avr_2blink__cpp_8cpp.html">blink_cpp example for barebone AVR programming</a></p>
+<dl class="section note"><dt>Note</dt><dd>Due to the fact that STM8S target was written with SDCC in mind, the C++ wrapper is not available for the STM8S platform.</dd></dl>
 <p>To make the use of this library a breeze, all source files have been documented and referenced using doxygen.</p>
 <ul>
 <li>You can find a list of classes here: <a href="annotated.html">Class list</a></li>
@@ -124,6 +126,7 @@ Selecting the target platform</h2>
 </ul>
 <p>Support for more platforms (ex. ESP and ARM) is planned in the future.</p>
 <p>Perhaps you may be wondering what the difference it makes to build for the barebone AVR target and the Arduino AVR target. While both targets can be effectively used for any AVR MCU based device, the barebone AVR target limits itself to the code provided by the AVR C libraries. The Arduino AVR target makes use of the code provided by the Arduino framework. The only difference relevant to the library user here is that the Arduino framework target will include the Arduino framework (which may not be desired or possible in some circumstances) and the differences in the library configuration struct (<a class="el" href="structws2812__cfg.html" title="Data structure to configure a WS2812 device struct on AVR platforms.">ws2812_cfg</a>, more on that later), which is platform specific and is used to configure various library parameters (data output pin, reset time, color order etc.).</p>
+<p>As for STM8S builds: The STM8S target currently requires the Standard Peripheral Library (SPL) to be included. In the future, there will likely be a version of the library that does not require the SPL.</p>
 <h2><a class="anchor" id="avr_example_sec"></a>
 Learning by example: Blinking one or more WS2812 devices</h2>
 <p>In the following section we will working our way through the <a class="el" href="arduino__avr_2blink__array_8c.html" title="Blinks one or more WS2812 devices using a RGB array.">examples/arduino_avr/blink_array.c</a> example. We assume our target platform to be ARDUINO_AVR, however most of the library specific code is the same across all platforms. Platform specific differences will be indicated.</p>
