@@ -28,7 +28,11 @@
 
 #ifdef __cplusplus
 
+extern "C" {
+
 #include <ws2812.h>
+
+}
 
 /**
  * @brief A C++ wrapper for the Tiny-WS2812 interface
@@ -49,7 +53,7 @@ public:
          * 0. For a overview of possible return values, refer to the @ref ws2812_config() reference. 
          *
          */
-        ws2812_cpp(ws2812_cfg config, uint8_t *ret);
+        ws2812_cpp(ws2812_cfg *cfg, uint8_t *ret);
 
 private:
         ws2812 _ws2812; ///< Wrapped ws2812 device struct

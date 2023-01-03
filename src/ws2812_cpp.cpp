@@ -31,9 +31,9 @@
 
 #include <ws2812_cpp.h>
 
-ws2812_cpp::ws2812_cpp(ws2812_cfg config, uint8_t *ret)
+ws2812_cpp::ws2812_cpp(ws2812_cfg *cfg, uint8_t *ret)
 {
-       *ret = ws2812_config(&_ws2812, config);
+       *ret = ws2812_config(&_ws2812, cfg);
 }
 
 void ws2812_cpp::prep_tx()

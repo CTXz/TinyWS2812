@@ -123,34 +123,34 @@ void delay_us(uint8_t us)
 #endif
 
 // Refer to header for documentation
-uint8_t ws2812_config(ws2812 *dev, ws2812_cfg config)
+uint8_t ws2812_config(ws2812 *dev, ws2812_cfg *cfg)
 {
-        if (config.n_dev == 0)
+        if (cfg->n_dev == 0)
                 return 1; // No devices to be driven!
         
         uint8_t pin_msk = 0;
 
 #ifdef WS2812_TARGET_PLATFORM_ARDUINO_AVR
-        for (uint8_t i = 0; i < config.n_dev; i++) {
-                if (i+1 < config.n_dev &&
-                    digitalPinToPort(config.pins[i]) != digitalPinToPort(config.pins[i+1]))
+        for (uint8_t i = 0; i < cfg->n_dev; i++) {
+                if (i+1 < cfg->n_dev &&
+                    digitalPinToPort(cfg->pins[i]) != digitalPinToPort(cfg->pins[i+1]))
                         return 2; // Pins do not share same port!
-                pinMode(config.pins[i], OUTPUT);
-                pin_msk |= digitalPinToBitMask(config.pins[i]);
+                pinMode(cfg->pins[i], OUTPUT);
+                pin_msk |= digitalPinToBitMask(cfg->pins[i]);
         }
-        dev->port = portOutputRegister(digitalPinToPort(config.pins[0]));
+        dev->port = portOutputRegister(digitalPinToPort(cfg->pins[0]));
 #else
-        for (uint8_t i = 0; i < config.n_dev; i++)
-                pin_msk |= 1 << config.pins[i];
+        for (uint8_t i = 0; i < cfg->n_dev; i++)
+                pin_msk |= 1 << cfg->pins[i];
 
-        *config.ddr = pin_msk;
-        dev->port = config.port;
+        *cfg->ddr = pin_msk;
+        dev->port = cfg->port;
 #endif
-        dev->rst_time_us = config.rst_time_us;
+        dev->rst_time_us = cfg->rst_time_us;
         dev->masklo = ~pin_msk & *(dev->port);
         dev->maskhi = pin_msk | *(dev->port);
         
-        _ws2812_get_rgbmap(&dev->rgbmap, config.order);
+        _ws2812_get_rgbmap(&dev->rgbmap, cfg->order);
         
         return 0;
 }
