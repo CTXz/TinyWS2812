@@ -14,6 +14,7 @@
  * The following platforms and frameworks are currently supported:
  *      - Barebone AVR
  *      - The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
+ *      - STM8S
  * 
  * It has been developed out of the necessity to have an extremely light 
  * weight and flexible cross-platform library that can be further abstracted
@@ -26,7 +27,7 @@
  * To summerize, this library is inteded to:
  *      - be used on MCUs with limited computing resources.
  *      - act as a base for more abstract WS2812 libraries.
- *      - be easily portable to other platforms or programming frameworks (ex. Arduino).
+ *      - be easily portable to other platforms or programming frameworks (ex. Arduino, STM8S).
  *
  * @note Because the motivation of this library is to be as barebone as possible,
  *      it relies on a superficial understanding of the WS2812 protocol and may
@@ -44,9 +45,9 @@
  * an understanding of the library interface is required.
  *
  * For C++ projects, the WS2812 library also offers a @ref ws2812_cpp "WS2812 C++ wrapper class".
- * For an usage example of the C++ wrapper, refer to the @ref examples/arduino_avr/blink_cpp.cxx
+ * For an usage example of the C++ wrapper, refer to the @ref examples/arduino_avr/blink_cpp.cpp
  * "blink_cpp example for the Arduino Framework" or the 
- * @ref examples/avr/blink_cpp.cxx "blink_cpp example for barebone AVR programming"
+ * @ref examples/avr/blink_cpp.cpp "blink_cpp example for barebone AVR programming"
  * 
  * To make the use of this library a breeze, all source files have been documented and
  * referenced using doxygen.
@@ -89,6 +90,7 @@
  * 
  * - Barebone AVR: `WS2812_TARGET_PLATFORM_AVR`
  * - Arduino Framework (AVR): `WS2812_TARGET_PLATFORM_ARDUINO_AVR`
+ * - STM8S: `WS2812_TARGET_PLATFORM_STM8S`
  * 
  * Support for more platforms (ex. ESP and ARM) is planned in the future.
  * 
@@ -103,7 +105,7 @@
  * pin, reset time, color order etc.).
  * 
  * @subsection avr_example_sec Learning by example: Blinking one or more WS2812 devices
- * In the following section we will working our way through the examples/arduino_avr/blink_array.cxx example.
+ * In the following section we will working our way through the examples/arduino_avr/blink_array.c example.
  * We assume our target platform to be ARDUINO_AVR, however most of the library specific
  * code is the same across all platforms. Platform specific differences will be indicated.
  * 
@@ -131,7 +133,7 @@ void setup()
         cfg.order = COLOR_ORDER;
         cfg.n_dev = sizeof(pins); // Number of devices driven by this struct
         
-        if (ws2812_config(&ws2812_dev, cfg) != 0) {
+        if (ws2812_config(&ws2812_dev, &cfg) != 0) {
                 // HANDLE ERROR HERE
                 void;
         }
@@ -243,7 +245,7 @@ void loop()
                 cfg.order = COLOR_ORDER;
                 cfg.n_dev = sizeof(pins); // Number of devices driven by this struct
                 
-                if (ws2812_config(&ws2812_dev, cfg) != 0) {
+                if (ws2812_config(&ws2812_dev, &cfg) != 0) {
                         // HANDLE ERROR HERE
                         void;
                 }
@@ -290,7 +292,7 @@ void loop()
  * a new transmission, or without waiting for the WS2812 device(s) to reset by 
  * calling ws2812_wait_rst(), will cause the device(s) to get programmed from
  * position where the last transmission has ended. This can actually  be used to
- * to ones advantage, as seen in the @ref examples/arduino_avr/blink_loop.cxx "blink_loop"
+ * to ones advantage, as seen in the @ref examples/arduino_avr/blink_loop.c "blink_loop"
  * example, where we save memory by repeatedly tranmsitting the same RGB value
  * to fill the device instead of creating an RGB array equal to the number of LEDs.
  *
@@ -307,5 +309,5 @@ void loop()
  * allocating an RGB array equal to the number of LEDs seems like a memory expensive solution. Instead
  * of allocating an array for all LEDs, we can simply repeatedly transmit the same color value to the 
  * WS2812 device(s) until all LEDs has been set. This much more memory friendly method is showcased in
- * the @ref examples/arduino_avr/blink_loop.cxx "blink_loop" example.
+ * the @ref examples/arduino_avr/blink_loop.c "blink_loop" example.
  */

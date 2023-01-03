@@ -1,0 +1,9 @@
+/**
+ * @dir examples/avr
+ * 
+ * @brief Examples for STM8S builds
+ * 
+ * The following directory holds example code that demonstrates
+ * how to use the Tiny WS2812 library on any STM8S device.
+ *
+ */

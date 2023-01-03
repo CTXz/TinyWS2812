@@ -17,7 +17,7 @@
  */
 
 /**
- * @file ws2812_common.cxx
+ * @file ws2812_common.c
  * @author Patrick Pedersen
  * @date 2021-04-09
  * 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['close_5ftx_63',['close_tx',['../classws2812__cpp.html#a1aa16ec73233609b708cf752e01a492e',1,'ws2812_cpp']]]
+  ['delay_5fus_62',['delay_us',['../ws2812__avr_8c.html#a8069aef456aba6f66b80ac92a4746a32',1,'ws2812_avr.c']]]
 ];

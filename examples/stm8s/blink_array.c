@@ -17,7 +17,7 @@
  */
 
 /**
-  * @file blink_array.cxx
+  * @file blink_array.c
   * @author Patrick Pedersen
   * @date 2022-10-26
   * @brief Blinks one or more WS2812 devices using a RGB array. 
@@ -28,7 +28,7 @@
   * creating a rgb array equal to the number of LEDs on the WS2812 device,
   * whose values we then transmit to the device using the ws2812_tx() function.
   *
-  * For a more memory efficient method, take a look at the blink_loop.cxx
+  * For a more memory efficient method, take a look at the blink_loop.c
   * example.
   * 
   * @note Please ensure that the WS2812_TARGET_PLATFORM_STM8S macro

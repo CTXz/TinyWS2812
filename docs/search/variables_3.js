@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['n_5fdev_82',['n_dev',['../structws2812__cfg.html#a2a6404a5d1e6d8829e2abcf5d916715b',1,'ws2812_cfg']]]
+  ['n_5fdev_76',['n_dev',['../structws2812__cfg.html#a2a6404a5d1e6d8829e2abcf5d916715b',1,'ws2812_cfg']]]
 ];

@@ -17,6 +17,7 @@ The following platforms and frameworks are currently supported:
 
 * Barebone AVR
 * The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
+* STM8S
  
 It has been developed out of the necessity to have an extremely light weight and flexible cross-platform library that can be further abstracted and used troughout my WS2812 projects, particullary on MCUs with severe memory constraints (ex. ATTiny chips), where one cannot just define an RGB array equivalent to the number of LEDs. This libraries purpose is **NOT** to provide fancy abstractions and functions for color correction, brightness settings, animations etc.
 
@@ -24,7 +25,7 @@ To summerize, this library is inteded to:
 
 * be used on MCUs with limited computing resources.
 * act as a base for more abstract WS2812 libraries.
-* be easily portable to other platforms or programming frameworks (ex. Arduino).
+* be easily portable to other platforms or programming frameworks (ex. Arduino, STM8S).
  
 Because the motivation of this library is to be as barebone as possible, it relies on a superficial understanding of the WS2812 protocol and may demand an understanding of the host platforms platform (eg. registers etc.). For quick and simple programming of WS2812 devices, where memory and processing power are not a big issue, other libraries should probably be consulted.
 
@@ -76,6 +77,7 @@ To use the Tiny-WS2812 library throughout your project, first ensure that you ha
 
 * Barebone AVR: `WS2812_TARGET_PLATFORM_AVR`
 * Arduino Framework (AVR): `WS2812_TARGET_PLATFORM_ARDUINO_AVR`
+* STM8S: `WS2812_TARGET_PLATFORM_STM8S`
  
 Support for more platforms (ex. ESP and ARM) is planned in the future.
 
@@ -84,7 +86,7 @@ Perhaps you may be wondering what the difference it makes to build for the bareb
 
 ## Learning by example: Blinking one or more WS2812 devices
 
-In the following section we will working our way through the examples/arduino_avr/blink_array.cxx example. We assume our target platform to be ARDUINO_AVR, however most of the library specific code is the same across all platforms. Platform specific differences will be indicated.
+In the following section we will working our way through the examples/arduino_avr/blink_array.c example. We assume our target platform to be ARDUINO_AVR, however most of the library specific code is the same across all platforms. Platform specific differences will be indicated.
 
 
 
@@ -112,7 +114,7 @@ void setup()
         cfg.order = COLOR_ORDER;
         cfg.n_dev = sizeof(pins); // Number of devices driven by this struct
         
-        if (ws2812_config(&ws2812_dev, cfg) != 0) {
+        if (ws2812_config(&ws2812_dev, &cfg) != 0) {
                 // HANDLE ERROR HERE
                 void;
         }
@@ -205,7 +207,7 @@ void setup()
         cfg.order = COLOR_ORDER;
         cfg.n_dev = sizeof(pins); // Number of devices driven by this struct
         
-        if (ws2812_config(&ws2812_dev, cfg) != 0) {
+        if (ws2812_config(&ws2812_dev, &cfg) != 0) {
                 // HANDLE ERROR HERE
                 void;
         }
@@ -252,4 +254,4 @@ In the example above we have used an RGB array to set the colors of one or more 
 
 -------------------------------
 
-Updated on 10 August 2021 at 03:35:22 CEST
+Updated on  3 January 2023 at 03:38:19 CET
