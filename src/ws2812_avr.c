@@ -160,7 +160,6 @@ void ws2812_prep_tx(ws2812 *dev)
 {
         if (_prep == false) {
                 _sreg_prev = SREG;
-                cli();
                 _prep = true;
         }
 }
@@ -187,9 +186,12 @@ void ws2812_wait_rst(ws2812 *dev)
  * library and achieves precisely timed communication with the WS2812 device
  * through inline AVR assembly code.
  * 
+ * @note This function disables interrupts for the duration of the transmission.
+ * 
  */
 void ws2812_tx_byte(ws2812 *dev, uint8_t byte)
 {
+        cli();
         uint8_t ctr;
 
         asm volatile(
@@ -253,6 +255,7 @@ void ws2812_tx_byte(ws2812 *dev, uint8_t byte)
                 :	"=&d" (ctr)
                 :	"r" (byte), "x" ((uint8_t *) dev->port), "r" (dev->maskhi), "r" (dev->masklo)
         );
+        sei();
 }
 
 #pragma GCC pop_options
@@ -273,7 +276,6 @@ void ws2812_close_tx(ws2812 *dev)
 {
         if (_prep == true) {
                 SREG = _sreg_prev;
-                sei();
                 _prep = false;
                 ws2812_wait_rst(dev);
         }
