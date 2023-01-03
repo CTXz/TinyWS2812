@@ -27,6 +27,8 @@
  * 
  */ 
 
+#ifdef __cplusplus
+
 #include <ws2812_cpp.h>
 
 ws2812_cpp::ws2812_cpp(ws2812_cfg config, uint8_t *ret)
@@ -53,3 +55,5 @@ void ws2812_cpp::close_tx()
 {
         ws2812_close_tx(&_ws2812);
 }
+
+#endif // __cplusplus

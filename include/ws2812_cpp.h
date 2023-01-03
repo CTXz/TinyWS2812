@@ -26,6 +26,8 @@
  * The following file defines a C++ wrapper for the Tiny-WS2812 interface
  */
 
+#ifdef __cplusplus
+
 #include <ws2812.h>
 
 /**
@@ -79,3 +81,5 @@ public:
          */
         void close_tx();
 };
+
+#endif // __cplusplus
