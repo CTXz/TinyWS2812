@@ -2,7 +2,7 @@
         "name": "Tiny WS2812",
         "version": "2.0.0",
         "description": "An extremely light cross-platform WS2812 driver.",
-        "keywords": "ws2812, driver, crossplatform, light, tiny, avr, arduino",
+        "keywords": "ws2812, driver, crossplatform, light, stm8s, tiny, avr, arduino",
         "repository":
         {
           "type": "git",
@@ -17,6 +17,6 @@
           }
         ],
         "license": "GPLv3",
-        "frameworks": "*",
-        "platforms": "*"
+        "frameworks": "arduino, spl",
+        "platforms": "atmelavr, ststm8"
       }
