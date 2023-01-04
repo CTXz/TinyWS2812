@@ -19,6 +19,7 @@ The following platforms and frameworks are currently supported:
 * The Arduino Framework (Currently only AVR based (eg. Uno, Leonardo, Micro...))
 * STM8S (With SPL)
  
+
 It has been developed out of the necessity to have an extremely light weight and flexible cross-platform library that can be further abstracted and used troughout my WS2812 projects, particullary on MCUs with severe memory constraints (ex. ATTiny and STM8S chips), where one cannot just define an RGB array equivalent to the number of LEDs. This libraries purpose is **NOT** to provide fancy abstractions and functions for color correction, brightness settings, animations etc.
 
 To summerize, this library is inteded to:
@@ -27,6 +28,7 @@ To summerize, this library is inteded to:
 * act as a base for more abstract WS2812 libraries.
 * be easily portable to other platforms or programming frameworks (ex. Arduino, STM8S).
  
+
 Because the motivation of this library is to be as barebone as possible, it relies on a superficial understanding of the WS2812 protocol and may demand a more technical and in-depth understanding of the host platforms platform (eg. registers etc.). For quick and simple programming of WS2812 devices, where memory and processing power are not a big issue, other libraries should probably be consulted instead.
 
 
@@ -49,6 +51,7 @@ To make the use of this library a breeze, all source files have been documented 
 * You can find a list of classes here: [Class list](https://ctxz.github.io/TinyWS2812/annotated.html)
 * You can find a overview of all source files, including examples, here: [File list](https://ctxz.github.io/TinyWS2812/files.html)
  
+
 In the next section we will go through a basic example to get familiar with the library in no time.
 
 
@@ -85,6 +88,7 @@ To use the Tiny-WS2812 library throughout your project, first ensure that you ha
 * Arduino Framework (AVR): `WS2812_TARGET_PLATFORM_ARDUINO_AVR`
 * STM8S: `WS2812_TARGET_PLATFORM_STM8S`
  
+
 Support for more platforms (ex. ESP and ARM) is planned in the future.
 
 Perhaps you may be wondering what the difference it makes to build for the barebone AVR target and the Arduino AVR target. While both targets can be effectively used for any AVR MCU based device, the barebone AVR target limits itself to the code provided by the AVR C libraries. The Arduino AVR target makes use of the code provided by the Arduino framework. The only difference relevant to the library user here is that the Arduino framework target will include the Arduino framework (which may not be desired or possible in some circumstances) and the differences in the library configuration struct (ws2812_cfg, more on that later), which is platform specific and is used to configure various library parameters (data output pin, reset time, color order etc.).
@@ -262,4 +266,4 @@ In the example above we have used an RGB array to set the colors of one or more 
 
 -------------------------------
 
-Updated on  3 January 2023 at 03:59:06 CET
+Updated on  4 January 2023 at 23:45:30 CET

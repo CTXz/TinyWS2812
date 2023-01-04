@@ -5,9 +5,9 @@ digraph "examples" {
   subgraph clusterdir_d28a4824dc47e487b107a5db32ef43c4 {
     graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d28a4824dc47e487b107a5db32ef43c4.html"];
     dir_d28a4824dc47e487b107a5db32ef43c4 [shape=plaintext label="examples"];
-    dir_03d0435b9536f16a60e5ac83d122b10a [shape=box label="arduino_avr" color="black" fillcolor="white" style="filled" URL="dir_03d0435b9536f16a60e5ac83d122b10a.html"];
-    dir_dcc73ae8d9017409f9960a071b395d53 [shape=box label="avr" color="black" fillcolor="white" style="filled" URL="dir_dcc73ae8d9017409f9960a071b395d53.html"];
-    dir_12f2e0885829b7125c65db210838c9d3 [shape=box label="stm8s" color="black" fillcolor="white" style="filled" URL="dir_12f2e0885829b7125c65db210838c9d3.html"];
+  dir_03d0435b9536f16a60e5ac83d122b10a [shape=box label="arduino_avr" fillcolor="white" style="filled" URL="dir_03d0435b9536f16a60e5ac83d122b10a.html"];
+  dir_dcc73ae8d9017409f9960a071b395d53 [shape=box label="avr" fillcolor="white" style="filled" URL="dir_dcc73ae8d9017409f9960a071b395d53.html"];
+  dir_12f2e0885829b7125c65db210838c9d3 [shape=box label="stm8s" fillcolor="white" style="filled" URL="dir_12f2e0885829b7125c65db210838c9d3.html"];
   }
   dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
   dir_dcc73ae8d9017409f9960a071b395d53->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="3", labeldistance=1.5 headhref="dir_000002_000004.html"];

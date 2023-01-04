@@ -18,7 +18,13 @@ digraph "src/ws2812_common.c"
   Node7 [label="ws2812_common.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__common_8h.html",tooltip="Definitions required by all platform specific headers."];
   Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="stddef.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 [label="ws2812_stm8s.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$ws2812__stm8s_8h.html",tooltip="Provides STM8S platform specific definitions."];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="stm8s.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="stddef.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
   Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
